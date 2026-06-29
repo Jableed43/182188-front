@@ -1,0 +1,89 @@
+<!-- 📝 EJERCICIO DE CLASE
+ • Creá una estructura de layout semántica con <header>, <main> y <footer>.
+ • Dentro de <main>, creá un formulario de registro de contacto profesional.
+ • El formulario debe contener:
+     • Nombre (obligatorio, mínimo 3 caracteres).
+     • Email (obligatorio, tipo email).
+     • Contraseña (obligatorio, mínimo 8 caracteres).
+     • Teléfono (validado con patrón numérico).
+     • Un desplegable <select> para elegir el país.
+     • Un checkbox para aceptar "Términos y condiciones".
+ • Añadí un botón de tipo submit.
+ • Probalo en el navegador enviando datos incorrectos para ver las advertencias nativas. -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío de clase - Registro de contacto</title>
+</head>
+<body>
+
+    <!-- HEADER semántico -->
+    <header>
+        <h1>Registro de Contacto Profesional</h1>
+        <nav>
+            <a href="index.html">Volver al índice</a>
+        </nav>
+    </header>
+
+    <!-- MAIN: contenido central -->
+    <main>
+        <form action="/contacto" method="POST">
+
+            <!-- Nombre: obligatorio, mínimo 3 caracteres (minlength) -->
+            <p>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" minlength="3" required>
+            </p>
+
+            <!-- Email: obligatorio, type email (valida formato @ y dominio) -->
+            <p>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </p>
+
+            <!-- Contraseña: obligatoria, mínimo 8 caracteres -->
+            <p>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" minlength="8" required>
+            </p>
+
+            <!-- Teléfono: validado con patrón numérico (solo dígitos, 7 a 15) -->
+            <p>
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono"
+                       pattern="[0-9]{7,15}" placeholder="Solo números" required>
+            </p>
+
+            <!-- Select de país -->
+            <p>
+                <label for="pais">País:</label>
+                <select id="pais" name="pais" required>
+                    <option value="">-- Elegí tu país --</option>
+                    <option value="ar">Argentina</option>
+                    <option value="br">Brasil</option>
+                    <option value="uy">Uruguay</option>
+                    <option value="cl">Chile</option>
+                </select>
+            </p>
+
+            <!-- Checkbox de términos y condiciones (required para aceptar) -->
+            <p>
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos">Acepto los Términos y Condiciones</label>
+            </p>
+
+            <button type="submit">Registrarme</button>
+
+        </form>
+    </main>
+
+    <!-- FOOTER semántico -->
+    <footer>
+        <p>&copy; 2026 Curso Front-End - Unidad 04.</p>
+    </footer>
+
+</body>
+</html>

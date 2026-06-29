@@ -1,0 +1,40 @@
+<!-- ATRIBUTOS ARIA (Accessible Rich Internet Applications)
+     Ayudan a los lectores de pantalla a entender elementos interactivos.
+       role="button"   -> avisa que el elemento actúa como un botón
+       aria-label="..."-> le da un nombre descriptivo a un botón visual (ej: la X de cerrar)
+       tabindex        -> permite enfocar con TAB (0 entra en orden, -1 lo ignora) -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesibilidad - Atributos ARIA</title>
+</head>
+<body>
+
+    <h1>Accesibilidad web básica con ARIA</h1>
+
+    <!-- Un <div> que actúa como botón: le damos role y aria-label para que el
+         lector de pantalla lo anuncie como "botón Cerrar ventana" -->
+    <div role="button" aria-label="Cerrar ventana" tabindex="0" style="
+        display: inline-block;
+        border: 1px solid #333;
+        padding: 8px 12px;
+        cursor: pointer;">
+        X
+    </div>
+
+    <p>El cuadro de arriba es un &lt;div&gt;, pero gracias a <code>role="button"</code>
+       y <code>aria-label</code> las tecnologías asistivas lo entienden como un botón.</p>
+
+    <h2>tabindex en acción</h2>
+    <p tabindex="0">Este párrafo es enfocable con TAB (tabindex="0").</p>
+    <p tabindex="-1">Este párrafo es ignorado por la navegación con TAB (tabindex="-1").</p>
+
+    <hr>
+    <p><strong>Recordá:</strong> siempre que se pueda, usá la etiqueta nativa
+       (&lt;button&gt;) en lugar de simular comportamiento con ARIA.</p>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!-- HTML SEMÁNTICO: El Poder del Significado
+     En vez de tirar <div> para todo ("Divitis"), usamos la etiqueta que
+     describe el SIGNIFICADO del contenido. No cambia el diseño, pero le da
+     "ojos" a Google (SEO) y a los lectores de pantalla (accesibilidad). -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Semántico - Layout</title>
+</head>
+<body>
+
+    <!-- HEADER: cabecera de la página. Suele tener el logo, el título y a veces un buscador -->
+    <header>
+        <h1>Mi Blog de Tecnología</h1>
+        <!-- NAV: espacio exclusivo para los enlaces de navegación -->
+        <nav>
+            <a href="#">Inicio</a> |
+            <a href="#">Artículos</a> |
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- MAIN: contenido central y exclusivo. Es ÚNICO, solo puede haber uno por documento -->
+    <main>
+
+        <!-- SECTION: gran sección temática, agrupa contenido relacionado. Arranca con un título -->
+        <section>
+            <h2>Últimos artículos</h2>
+
+            <!-- ARTICLE: contenido independiente y autocontenido.
+                 Prueba de fuego: si lo cortás y lo pegás en otra web, ¿se entiende solo? -->
+            <article>
+                <header>
+                    <h3>¿Qué es HTML Semántico?</h3>
+                    <p>Publicado el 29/06/2026</p>
+                </header>
+                <p>
+                    Para construir interfaces profesionales no basta con agrupar
+                    elementos visualmente. Hay que estructurar la información para
+                    que sea legible por usuarios, buscadores y tecnologías asistivas.
+                </p>
+            </article>
+
+            <article>
+                <header>
+                    <h3>Adiós a la Divitis</h3>
+                    <p>Publicado el 28/06/2026</p>
+                </header>
+                <p>
+                    Antes se envolvía absolutamente todo en un &lt;div&gt;. Hoy usamos
+                    etiquetas específicas según la función del contenido.
+                </p>
+            </article>
+        </section>
+
+        <!-- ASIDE: contenido secundario relacionado tangencialmente.
+             Si lo sacás, la página se sigue entendiendo (barras laterales, widgets, etc.) -->
+        <aside>
+            <h2>Enlaces relacionados</h2>
+            <ul>
+                <li><a href="https://developer.mozilla.org/es/docs/Web/HTML">MDN: HTML</a></li>
+                <li><a href="https://developer.mozilla.org/es/docs/Web/CSS">MDN: CSS</a></li>
+            </ul>
+        </aside>
+
+    </main>
+
+    <!-- FOOTER: pie o cierre. Copyright, contacto, enlaces legales o redes sociales -->
+    <footer>
+        <p>&copy; 2026 Mi Blog de Tecnología - Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>

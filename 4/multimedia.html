@@ -1,0 +1,53 @@
+<!-- MULTIMEDIA, ELEMENTOS EMBEBIDOS Y CONTROL DE VISIBILIDAD
+     HTML5 nos da etiquetas nativas para imágenes, audio, video e iframes,
+     sin necesidad de plugins de terceros (como el viejo Flash). -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia y elementos embebidos</title>
+</head>
+<body>
+
+    <h1>Multimedia y elementos embebidos</h1>
+
+    <!-- IMG: el atributo alt es OBLIGATORIO en el mundo profesional.
+         Sirve de respaldo si la imagen no carga y es clave para lectores de pantalla. -->
+    <h2>Imágenes</h2>
+    <img src="https://http.cat/images/200.jpg" alt="Gato representando el código HTTP 200 OK" width="300">
+
+    <!-- VIDEO: atributos clave
+         src      -> ruta del archivo
+         controls -> muestra los botones del reproductor
+         autoplay -> reproduce al cargar (invasivo, usar con moderación)
+         loop     -> reinicia al terminar (bucle)
+         muted    -> inicia sin sonido (los navegadores lo exigen para el autoplay) -->
+    <h2>Video</h2>
+    <video src="videos/lluvia-fondo.mp4" width="100%" autoplay controls muted loop>
+        Tu navegador no soporta la etiqueta video.
+    </video>
+
+    <!-- AUDIO: comparte los mismos atributos de control que video -->
+    <h2>Audio</h2>
+    <audio src="mi-audio.mp3" controls>
+        Tu navegador no soporta la etiqueta audio.
+    </audio>
+
+    <!-- IFRAME: "portales mágicos". Incrustan una página entera o partes
+         interactivas (Google Maps, YouTube, Spotify, etc.) dentro de un rectángulo. -->
+    <h2>Iframe (mapa embebido)</h2>
+    <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-58.45,-34.65,-58.35,-34.55&layer=mapnik"
+        width="600" height="450" style="border:0;" allowfullscreen loading="lazy">
+    </iframe>
+
+    <p>
+        Las etiquetas multimedia permiten archivos <strong>locales</strong>
+        (dentro del proyecto) y <strong>remotos</strong> (una URL externa, una API
+        o una plataforma de streaming).
+    </p>
+
+</body>
+</html>

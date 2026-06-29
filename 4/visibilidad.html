@@ -1,0 +1,57 @@
+<!-- EL DUELO DEL RENDERIZADO: display:none vs visibility:hidden
+     A nivel visual ambos ocultan el elemento, pero el navegador los procesa distinto:
+
+       display: none;      -> desaparece TOTALMENTE. Los demás elementos se acomodan
+                              y ocupan su lugar (no deja hueco).
+       visibility: hidden; -> se vuelve invisible PERO mantiene el hueco
+                              (sigue ocupando su espacio físico exacto). -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display:none vs visibility:hidden</title>
+    <style>
+        .caja {
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            background-color: steelblue;
+            color: white;
+            text-align: center;
+            line-height: 120px;
+            margin: 5px;
+        }
+        /* Desaparece y NO deja hueco: los vecinos se corren */
+        .oculta-display { display: none; }
+        /* Desaparece pero SÍ deja el hueco: los vecinos no se mueven */
+        .oculta-visibility { visibility: hidden; }
+    </style>
+</head>
+<body>
+
+    <h1>display:none vs visibility:hidden</h1>
+
+    <h2>Con display: none (la caja 2 desaparece y deja su lugar)</h2>
+    <div class="caja">1</div>
+    <div class="caja oculta-display">2</div>
+    <div class="caja">3</div>
+
+    <h2>Con visibility: hidden (la caja 2 se vuelve invisible pero deja el hueco)</h2>
+    <div class="caja">1</div>
+    <div class="caja oculta-visibility">2</div>
+    <div class="caja">3</div>
+
+    <hr>
+    <p>
+        Usá <code>display: none;</code> para ocultar algo por completo y que el
+        resto aproveche el espacio (ej: un menú desplegable colapsado).
+    </p>
+    <p>
+        Usá <code>visibility: hidden;</code> cuando no quieras que el diseño pegue
+        un salto al ocultar (ej: un mensaje de error o un ícono de carga temporal).
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!-- FORMULARIOS: el buzón de recolección de datos.
+     El <input> es el elemento más versátil de HTML: su comportamiento cambia
+     radicalmente según el atributo type.
+     OJO con el atributo name: sin él, el servidor no sabe qué dato es cuál. -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios - El universo input</title>
+</head>
+<body>
+
+    <h1>El universo &lt;input&gt;</h1>
+
+    <!-- Enviamos los datos ocultos por POST al servidor imaginario /registro.
+         GET  -> datos visibles en la URL (buscadores, filtros)
+         POST -> datos ocultos en el cuerpo (login, contraseñas, archivos) -->
+    <form action="/registro" method="POST">
+
+        <!-- LABEL + INPUT: el atributo 'for' del label debe ser IDÉNTICO al 'id'
+             del input. Así, al clickear el texto, el cursor salta dentro del input. -->
+        <p>
+            <label for="nombre_usuario">Nombre Completo:</label>
+            <input type="text" id="nombre_usuario" name="nombre_real" placeholder="Ej: Juan Perez" required>
+        </p>
+
+        <p>
+            <label for="clave">Crea una Contraseña:</label>
+            <input type="password" id="clave" name="password_secreta" required>
+        </p>
+
+        <p>
+            <label for="correo">Tu E-mail de contacto:</label>
+            <input type="email" id="correo" name="email_contacto">
+        </p>
+
+        <p>
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" min="0" max="120">
+        </p>
+
+        <p>
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono">
+        </p>
+
+        <p>
+            <label for="nacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="nacimiento" name="nacimiento">
+        </p>
+
+        <p>
+            <label for="favorito">Color favorito:</label>
+            <input type="color" id="favorito" name="favorito">
+        </p>
+
+        <p>
+            <label for="volumen">Volumen:</label>
+            <input type="range" id="volumen" name="volumen" min="0" max="100">
+        </p>
+
+        <p>
+            <label for="adjunto">Subí tu CV:</label>
+            <input type="file" id="adjunto" name="adjunto">
+        </p>
+
+        <!-- FIELDSET + LEGEND: agrupación semántica de opciones.
+             RADIO: opción única (ambos comparten name="plan" para competir entre sí) -->
+        <fieldset>
+            <legend>Elige tu Plan de Suscripción</legend>
+            <input type="radio" name="plan" id="basico" value="plan_basico">
+            <label for="basico">Plan Básico (Gratis)</label>
+            <br>
+            <input type="radio" name="plan" id="pro" value="plan_pro">
+            <label for="pro">Plan Profesional ($10)</label>
+        </fieldset>
+
+        <!-- CHECKBOX: permite seleccionar varias opciones a la vez -->
+        <fieldset>
+            <legend>Intereses</legend>
+            <input type="checkbox" name="interes" id="html" value="html">
+            <label for="html">HTML</label>
+            <input type="checkbox" name="interes" id="css" value="css">
+            <label for="css">CSS</label>
+            <input type="checkbox" name="interes" id="js" value="js">
+            <label for="js">JavaScript</label>
+        </fieldset>
+
+        <!-- TEXTAREA: para párrafos / comentarios largos. Se puede estirar.
+             SELECT + OPTION: lista desplegable -->
+        <p>
+            <label for="mensaje">Tu consulta:</label><br>
+            <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea>
+        </p>
+
+        <p>
+            <label for="pais">País:</label>
+            <select id="pais" name="pais">
+                <option value="ar">Argentina</option>
+                <option value="br">Brasil</option>
+                <option value="uy">Uruguay</option>
+            </select>
+        </p>
+
+        <!-- SUBMIT: gatilla el envío del formulario -->
+        <button type="submit">Enviar mis datos al Servidor</button>
+
+    </form>
+
+</body>
+</html>
