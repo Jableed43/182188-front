@@ -1,0 +1,74 @@
+/* ============================================================
+   tarjeta.css - Solución del desafío de clase
+   Demuestra: CSS externo + reset + Box Model + clase + rem + :hover
+   ============================================================ */
+
+/* Reset profesional (línea 1) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+    /* Centramos la tarjeta usando el alto de la ventana (vh) */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* CLASE reutilizable para la tarjeta. Todo el Box Model en acción. */
+.tarjeta {
+    width: 20rem;              /* rem para el tamaño */
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;          /* espacio interno: el contenido "respira" */
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* sombra en px */
+}
+
+.tarjeta__foto {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;       /* la vuelve un círculo */
+    object-fit: cover;
+    border: 3px solid #2b6cb0;
+    margin-bottom: 1rem;      /* margin: separa de lo de abajo */
+}
+
+.tarjeta__nombre {
+    font-size: 1.5rem;
+    color: #2b6cb0;
+}
+
+.tarjeta__rol {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 1rem;
+}
+
+.tarjeta__bio {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.tarjeta__boton {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background-color: #2b6cb0;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+/* Pseudo-clase :hover -> efecto al pasar el mouse */
+.tarjeta__boton:hover {
+    background-color: #1a4a7a;
+}

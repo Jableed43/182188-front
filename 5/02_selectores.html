@@ -1,0 +1,65 @@
+<!-- BLOQUE 3 - SELECTORES
+     Básicos:
+       Etiqueta  p { }        -> bombardeo masivo (todos los <p>)
+       Clase (.) .mi-boton { }-> el recomendado, ataque de precisión (reutilizable)
+       ID (#)    #header { }   -> único por página (como un DNI)
+     Avanzados:
+       Hijo directo (>)      ul > li
+       Hermano adyacente (+) h1 + p
+       Atributo ([])         input[type="text"] -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectores CSS</title>
+    <style>
+        /* ETIQUETA: le pega a TODOS los <p> */
+        p { color: #333; }
+
+        /* CLASE (.): reutilizable, el recomendado */
+        .destacado {
+            background-color: #fff3cd;
+            padding: 4px 8px;
+        }
+
+        /* ID (#): único por página */
+        #principal { color: #2b6cb0; }
+
+        /* HIJO DIRECTO (>): solo los <li> que son hijos directos de .menu */
+        .menu > li { font-weight: bold; }
+
+        /* HERMANO ADYACENTE (+): el <p> que va JUSTO después de un <h2> */
+        h2 + p { font-style: italic; }
+
+        /* ATRIBUTO ([]): los input de tipo text */
+        input[type="text"] { border: 2px solid #2b6cb0; }
+    </style>
+</head>
+<body>
+
+    <h1 id="principal">Selectores (este h1 usa ID #principal)</h1>
+
+    <h2>Selector de hermano adyacente</h2>
+    <p>Este párrafo va justo después del h2, así que sale en itálica (h2 + p).</p>
+    <p>Este otro párrafo NO, porque no es adyacente al h2.</p>
+
+    <p>Este texto tiene una <span class="destacado">palabra con clase .destacado</span>.</p>
+
+    <h2>Selector de hijo directo</h2>
+    <ul class="menu">
+        <li>Item hijo directo (en negrita)</li>
+        <li>Otro item hijo directo (en negrita)
+            <ul>
+                <li>Este NO es hijo directo de .menu (no se pone en negrita)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Selector de atributo</h2>
+    <input type="text" placeholder="Tengo borde azul (input[type=text])">
+    <input type="password" placeholder="Yo no">
+
+</body>
+</html>

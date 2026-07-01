@@ -1,0 +1,66 @@
+<!-- PSEUDO-CLASES Y PSEUDO-ELEMENTOS
+     Pseudo-clases (reaccionan a un ESTADO):
+       :hover  -> el mouse está encima
+       :active -> se está haciendo clic
+       :focus  -> el elemento tiene el foco (teclado)
+       :nth-child(n) -> selecciona un hijo matemático (ej: filas pares)
+     Pseudo-elementos (inyectan/estilizan una PARTE):
+       ::before / ::after -> inyectan decoración (requieren content: "";)
+       ::selection        -> color del texto resaltado -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo-clases y pseudo-elementos</title>
+    <style>
+        .boton {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2b6cb0;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        /* :hover -> al pasar el mouse */
+        .boton:hover { background-color: #1a4a7a; }
+        /* :active -> mientras se hace clic */
+        .boton:active { background-color: #0d2b47; }
+
+        /* :focus -> input enfocado con el teclado */
+        input:focus { outline: 3px solid #2b6cb0; }
+
+        /* :nth-child(even) -> las filas PARES de la lista */
+        li:nth-child(even) { background-color: #e2e8f0; }
+
+        /* ::before -> inyecta contenido decorativo ANTES (requiere content) */
+        .tarea::before { content: "✅ "; }
+
+        /* ::selection -> color del texto cuando lo seleccionás con el mouse */
+        ::selection { background-color: #ffe066; }
+    </style>
+</head>
+<body>
+
+    <h1>Pseudo-clases y pseudo-elementos</h1>
+
+    <p>Seleccioná este texto con el mouse para ver ::selection en acción.</p>
+
+    <button class="boton">Pasá el mouse y hacé clic (:hover / :active)</button>
+
+    <p style="margin-top: 1rem;">
+        <label>Escribí acá (:focus): </label>
+        <input type="text" placeholder="Hacé clic para enfocarme">
+    </p>
+
+    <h2>Lista con :nth-child(even) y ::before</h2>
+    <ul>
+        <li class="tarea">Tarea uno</li>
+        <li class="tarea">Tarea dos (fila par, con fondo)</li>
+        <li class="tarea">Tarea tres</li>
+        <li class="tarea">Tarea cuatro (fila par, con fondo)</li>
+    </ul>
+
+</body>
+</html>

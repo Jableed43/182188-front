@@ -1,0 +1,57 @@
+<!-- BLOQUE 4 - LA GUERRA DE LAS UNIDADES
+       px      Absoluta          -> bordes y sombras (NUNCA fuentes)
+       rem     Relativa al raíz  -> la MEJOR para fuentes y márgenes
+       em      Relativa al padre -> peligrosa (muta al anidar)
+       vh/vw   Viewport          -> portadas (100vh = alto de pantalla)
+       %       Del padre         -> columnas responsivas -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La guerra de las unidades</title>
+    <style>
+        /* La raíz define el tamaño base: 1rem = 16px por defecto */
+        html { font-size: 16px; }
+
+        .px    { border: 2px solid #2b6cb0; }        /* px: perfecto para bordes */
+        .rem   { font-size: 1.5rem; }                /* rem: 1.5 * 16px = 24px */
+
+        /* em muta al anidar: cada nivel multiplica al del padre */
+        .em-padre { font-size: 20px; }
+        .em-hijo  { font-size: 1.5em; }              /* 1.5 * 20px = 30px */
+
+        /* vh/vw: relativas al tamaño de la ventana (viewport) */
+        .portada {
+            height: 50vh;                            /* la mitad del alto de la pantalla */
+            background-color: #2b6cb0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* % relativo al padre: columna que ocupa la mitad del contenedor */
+        .columna { width: 50%; background-color: #e2e8f0; padding: 1rem; }
+    </style>
+</head>
+<body>
+
+    <h1>La guerra de las unidades</h1>
+
+    <p class="rem">Este texto usa <strong>rem</strong> (1.5rem = 24px). La mejor para fuentes.</p>
+
+    <div class="em-padre">
+        Padre a 20px.
+        <span class="em-hijo">Hijo a 1.5em = 30px (em muta según el padre).</span>
+    </div>
+
+    <p class="px" style="margin-top:1rem; padding:8px;">Caja con borde en px (2px).</p>
+
+    <div class="columna">Columna al 50% del ancho del padre (%).</div>
+
+    <div class="portada">Portada a 50vh (mitad del alto de la ventana).</div>
+
+</body>
+</html>

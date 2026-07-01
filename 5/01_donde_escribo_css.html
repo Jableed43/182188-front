@@ -1,0 +1,58 @@
+<!-- BLOQUE 2 - ¿DÓNDE ESCRIBO CSS?
+     Hay 3 lugares, de peor a mejor práctica:
+       1) Inline (style="...")  -> PROHIBIDO, ensucia el HTML.
+       2) Interno (<style>)     -> solo para pruebas rápidas.
+       3) Externo (.css + link) -> el ESTÁNDAR profesional (ver index.html). -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Dónde escribo CSS?</title>
+
+    <!-- 2) CSS INTERNO: va en el <head> dentro de <style>. Solo pruebas rápidas. -->
+    <style>
+        .caja-interna {
+            background-color: #d4edda;
+            border: 1px solid #28a745;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Anatomía de una regla CSS</h1>
+    <pre>
+    selector {
+        propiedad: valor;
+    }
+    </pre>
+    <p>
+        <strong>Selector:</strong> ¿a quién le hablo? &middot;
+        <strong>Propiedad:</strong> ¿qué le cambio? &middot;
+        <strong>Valor:</strong> ¿cómo lo quiero?
+    </p>
+
+    <hr>
+
+    <!-- 1) CSS INLINE: dentro del atributo style. PROHIBIDO en producción. -->
+    <p style="color: red; font-weight: bold;">
+        Este texto usa CSS inline (style="..."). Ensucia el HTML: no lo hagas.
+    </p>
+
+    <!-- 2) Usa la clase definida arriba en el <style> interno -->
+    <div class="caja-interna">
+        Esta caja usa CSS interno (una regla dentro de &lt;style&gt; en el head).
+    </div>
+
+    <p>
+        La forma correcta y profesional es el <strong>CSS externo</strong>:
+        un archivo <code>.css</code> enlazado con
+        <code>&lt;link rel="stylesheet" href="css/styles.css"&gt;</code>,
+        como se ve en <a href="index.html">index.html</a>.
+    </p>
+
+</body>
+</html>

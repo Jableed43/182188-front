@@ -1,0 +1,48 @@
+<!-- HERENCIA: ¿QUÉ PASA A LOS HIJOS?
+     SÍ heredan (propiedades de TEXTO): color, font-family, text-align...
+                (se puede forzar con la palabra clave inherit)
+     NO heredan (el BOX MODEL): border, padding, margin, background, width, height -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia en CSS</title>
+    <style>
+        /* Definimos todo en el padre */
+        .padre {
+            color: #2b6cb0;            /* SE HEREDA -> los hijos salen azules */
+            font-family: 'Courier New', monospace; /* SE HEREDA */
+            text-align: center;        /* SE HEREDA */
+            border: 3px solid #2b6cb0; /* NO se hereda -> el hijo no tiene borde */
+            padding: 20px;             /* NO se hereda */
+            background-color: #f0f4f8; /* NO se hereda */
+        }
+
+        /* Forzamos que el hijo herede el fondo con inherit */
+        .hijo-forzado {
+            background-color: inherit; /* ahora SÍ toma el fondo del padre */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Herencia: ¿qué pasa a los hijos?</h1>
+
+    <div class="padre">
+        Soy el PADRE (azul, centrado, monospace, con borde y fondo).
+
+        <p>
+            Soy un HIJO: heredé el color, la fuente y el centrado...
+            pero NO el borde, el padding ni el fondo (eso es Box Model).
+        </p>
+
+        <p class="hijo-forzado">
+            Soy un hijo que forzó el fondo del padre con
+            <code>background-color: inherit;</code>.
+        </p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+
+===== SLIDE 1 =====
+Introducción a CSS: Estilo y Cascada
+Módulo 1: Arquitectura y Maquetación Moderna
+
+===== SLIDE 2 =====
+Objetivos de la Clase
+Unidad 05
+
+===== SLIDE 3 =====
+Objetivos de la Clase
+Dominar los selectores y la jerarquía (cascada) de CSS.
+Comprender y manipular el Box Model.
+Aplicar efectos modernos (sombras, bordes, overflow).
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 4 =====
+Bloque 1 — ¿Qué es CSS?
+Unidad 05
+
+===== SLIDE 5 =====
+Bloque 1 — ¿Qué es CSS?
+Cascading Style Sheets: lenguaje de diseño que da instrucciones visuales (color, tamaño, posición).
+Hojas de estilo: archivo .css con las reglas de belleza.
+Cascada: las reglas fluyen de arriba hacia abajo; ante conflictos, gana una jerarquía estricta.
+Anatomía de una regla
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 6 =====
+Código — Bloque 1 — ¿Qué es CSS?
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+selector {
+  propiedad: valor;
+}
+
+===== SLIDE 7 =====
+Bloque 1 — ¿Qué es CSS?
+Selector: ¿a quién le hablo?
+Propiedad: ¿qué le cambio?
+Valor: ¿cómo lo quiero?
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 8 =====
+Pseudo-clases y Pseudo-elementos
+Unidad 05
+
+===== SLIDE 9 =====
+Pseudo-clases y Pseudo-elementos
+:hover / :active / :focus: reaccionan al mouse, clic y teclado.
+:nth-child(n): selecciona un hijo matemático (ej: filas pares).
+::before / ::after: inyectan decoración (requieren content: "";).
+::selection: color del texto resaltado.
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 10 =====
+Bloque 2 — ¿Dónde escribo CSS?
+Unidad 05
+
+===== SLIDE 11 =====
+Bloque 2 — ¿Dónde escribo CSS?
+Inline (style="..."): PROHIBIDO, ensucia el HTML.
+Interno (<style>): solo pruebas rápidas.
+Externo (.css + <link>): el estándar profesional.
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 12 =====
+Código — Bloque 2 — ¿Dónde escribo CSS?
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+<!-- En el <head> del HTML -->
+<link rel="stylesheet" href="css/styles.css">
+
+===== SLIDE 13 =====
+Bloque 2 — ¿Dónde escribo CSS?
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+💡 TIP
+Arquitectura modular: un `styles.css` centralizador que usa `@import url('./header.css')` para no tener un archivo de 2000 líneas.
+
+===== SLIDE 14 =====
+Bloque 3 — Selectores
+Unidad 05
+
+===== SLIDE 15 =====
+Bloque 3 — Selectores
+Etiqueta: p { } — bombardeo masivo (todos los <p>).
+Clase (.): .mi-boton { } — el recomendado, ataque de precisión.
+ID (#): #header { } — único por página (como un DNI).
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 16 =====
+Bloque 3 — Selectores
+Avanzados
+Hijo directo (>): ul > li.
+Hermano adyacente (+): h1 + p.
+Atributo ([]): input[type="text"].
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 17 =====
+Especificidad: el sistema de puntos
+Unidad 05
+
+===== SLIDE 18 =====
+Especificidad: el sistema de puntos
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+Selector | Valor
+Inline (style="") | 1.0.0.0 (invencible)
+ID (#) | 0.1.0.0 (100)
+Clase / pseudo-clase | 0.0.1.0 (10)
+Etiqueta | 0.0.0.1 (1)
+
+===== SLIDE 19 =====
+Especificidad: el sistema de puntos
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+⚠️ IMPORTANTE
+`#menu { color: red }` (100) gana a `.nav-item { color: blue }` (10) sin importar el orden. El ID destroza a la clase.
+
+===== SLIDE 20 =====
+Bloque 4 — La Guerra de las Unidades
+Unidad 05
+
+===== SLIDE 21 =====
+Bloque 4 — La Guerra de las Unidades
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+Unidad | Tipo | Uso
+px | Absoluta | Bordes y sombras (NUNCA fuentes)
+rem | Relativa al raíz | La mejor para fuentes y márgenes
+em | Relativa al padre | Peligrosa (muta al anidar)
+vh / vw | Viewport | Portadas (100vh)
+% | Del padre | Columnas responsivas
+
+===== SLIDE 22 =====
+Propiedades de Texto y Color
+Unidad 05
+
+===== SLIDE 23 =====
+Código — Propiedades de Texto y Color
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+body {
+  font-family: 'Helvetica', sans-serif;
+  color: #333333;
+  background-color: #f4f4f4;
+}
+.titulo-principal {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #2b6cb0;
+}
+
+===== SLIDE 24 =====
+Herencia: ¿qué pasa a los hijos?
+Unidad 05
+
+===== SLIDE 25 =====
+Herencia: ¿qué pasa a los hijos?
+SÍ heredan: color, font-family, text-align (texto). Forzable con inherit.
+NO heredan: border, padding, margin, background, width, height (el Box Model).
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 26 =====
+Bloque 5 — El Modelo de Caja (Box Model)
+Unidad 05
+
+===== SLIDE 27 =====
+Bloque 5 — El Modelo de Caja (Box Model)
+TODO elemento es una caja. Analogía del cuadro en una galería:
+Content: la obra (texto/foto).
+Padding: el paspartú (espacio interno).
+Border: el marco.
+Margin: distancia en la pared (espacio externo).
+Margin vs Padding
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 28 =====
+Bloque 5 — El Modelo de Caja (Box Model)
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+Característica | padding (interno) | margin (externo)
+Ubicación | Dentro del borde | Fuera del borde
+Color de fondo | Toma el de la caja | Transparente
+Función | El contenido "respira" | Separa cajas vecinas
+
+===== SLIDE 29 =====
+Live Coding — El Reset Profesional
+Unidad 05
+
+===== SLIDE 30 =====
+Live Coding — El Reset Profesional
+box-sizing: border-box mantiene el ancho clavado (mete padding y borde hacia adentro), evitando que las matemáticas rompan las columnas.
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 31 =====
+Código — Live Coding — El Reset Profesional
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+/* Línea 1 de tu styles.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+===== SLIDE 32 =====
+¿Dudas? Espacio para Preguntas
+
+===== SLIDE 33 =====
+Espacio para Preguntas
+¿Clase o ID para reutilizar un estilo?
+¿Por qué rem y no px en tipografías?
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 34 =====
+Cierre y Checkpoint
+Unidad 05
+
+===== SLIDE 35 =====
+Cierre y Checkpoint
+CSS = diseño en cascada; ante conflictos gana la especificidad.
+Selectores: clase para reutilizar, ID único.
+Box Model + border-box = base de toda la maquetación.
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna  /  Unidad 05  /  Introducción a CSS: Estilo y Cascada
+
+===== SLIDE 36 =====
+¡Gracias!
+Centro de e-Learning UTN.BA

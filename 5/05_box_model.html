@@ -1,0 +1,50 @@
+<!-- BLOQUE 5 - EL MODELO DE CAJA (BOX MODEL)
+     TODO elemento es una caja. Analogía del cuadro en una galería:
+       Content: la obra (texto/foto)
+       Padding: el paspartú (espacio INTERNO, toma el color de fondo de la caja)
+       Border : el marco
+       Margin : distancia en la pared (espacio EXTERNO, transparente)
+
+     margin vs padding:
+       padding -> dentro del borde, hace que el contenido "respire"
+       margin  -> fuera del borde, separa cajas vecinas -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <style>
+        /* Sin border-box, el ancho real = width + padding + border (rompe columnas) */
+        .caja {
+            width: 250px;
+            background-color: #cce5ff;
+            border: 5px solid #2b6cb0;
+            padding: 20px;   /* espacio INTERNO: toma el color de fondo */
+            margin: 20px;    /* espacio EXTERNO: transparente, separa vecinas */
+        }
+
+        /* EL RESET PROFESIONAL: border-box mete el padding y el borde HACIA ADENTRO,
+           así el ancho queda "clavado" en 250px y las matemáticas no rompen nada. */
+        .caja-border-box {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>El Modelo de Caja (Box Model)</h1>
+
+    <p>La caja azul tiene: content + padding (20px) + border (5px) + margin (20px).</p>
+    <div class="caja">
+        Caja SIN box-sizing. Su ancho visible real es 250 + 20*2 + 5*2 = 300px.
+    </div>
+
+    <div class="caja caja-border-box">
+        Caja CON box-sizing: border-box. El ancho queda clavado en 250px:
+        el padding y el borde se meten hacia adentro.
+    </div>
+
+</body>
+</html>

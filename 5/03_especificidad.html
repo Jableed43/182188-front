@@ -1,0 +1,54 @@
+<!-- ESPECIFICIDAD: EL SISTEMA DE PUNTOS
+     Ante conflictos NO siempre gana el último: gana el más específico.
+       Inline (style="")     -> 1.0.0.0 (invencible)
+       ID (#)                -> 0.1.0.0 (100)
+       Clase / pseudo-clase  -> 0.0.1.0 (10)
+       Etiqueta              -> 0.0.0.1 (1)
+     Ejemplo clave:
+       #menu { color: red }  (100)  GANA a
+       .nav-item { color: blue } (10)  sin importar el orden. El ID destroza a la clase. -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especificidad CSS</title>
+    <style>
+        /* La clase vale 10 puntos... */
+        .nav-item { color: blue; }
+
+        /* ...pero el ID vale 100: GANA aunque esté escrito ANTES */
+        #menu { color: red; }
+
+        /* La etiqueta vale solo 1 punto: pierde contra la clase */
+        p { color: green; }
+    </style>
+</head>
+<body>
+
+    <h1>Especificidad: el sistema de puntos</h1>
+
+    <!-- Este elemento tiene id="menu" (100) y class="nav-item" (10).
+         Resultado: gana el ID -> se ve ROJO, no azul. -->
+    <p id="menu" class="nav-item">
+        Tengo id (#menu = 100) y clase (.nav-item = 10). Gano por el ID: me veo ROJO.
+    </p>
+
+    <!-- Este tiene solo la clase (10) vs la etiqueta p (1): gana la clase -> AZUL -->
+    <p class="nav-item">
+        Solo tengo la clase (10) contra la etiqueta p (1). Gano la clase: me veo AZUL.
+    </p>
+
+    <!-- Este solo matchea la etiqueta p (1): VERDE -->
+    <p>
+        Solo me alcanza la regla de etiqueta p (1 punto): me veo VERDE.
+    </p>
+
+    <hr>
+    <p style="color: purple;">
+        Y este usa CSS inline (1.0.0.0): es invencible, se ve VIOLETA.
+    </p>
+
+</body>
+</html>

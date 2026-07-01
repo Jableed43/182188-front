@@ -1,0 +1,62 @@
+/* ============================================================
+   styles.css - Hoja de estilos EXTERNA (el estándar profesional)
+   Clase 05 - Introducción a CSS: Estilo y Cascada
+   ============================================================ */
+
+/* --- EL RESET PROFESIONAL ---
+   Siempre en la línea 1 de tu styles.css.
+   box-sizing: border-box mantiene el ancho "clavado": mete el padding y el
+   borde HACIA ADENTRO, evitando que las matemáticas rompan las columnas. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- PROPIEDADES DE TEXTO Y COLOR ---
+   color, font-family y text-align SÍ se heredan a los hijos. */
+body {
+    font-family: 'Helvetica', sans-serif;
+    color: #333333;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+    padding: 2rem; /* rem: relativa al raíz, la mejor para márgenes y fuentes */
+}
+
+/* Selector de CLASE (.): el recomendado, ataque de precisión y reutilizable */
+.titulo-principal {
+    font-size: 2.5rem;   /* rem, NUNCA px para fuentes */
+    font-weight: 700;
+    text-align: center;
+    color: #2b6cb0;
+}
+
+header,
+footer {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto; /* centrado horizontal con margin auto */
+}
+
+/* Selector de ETIQUETA: le pega a TODOS los <a> (bombardeo masivo) */
+a {
+    color: #2b6cb0;
+    text-decoration: none;
+}
+
+/* Pseudo-clase :hover -> reacciona al pasar el mouse */
+a:hover {
+    text-decoration: underline;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    margin: 0.5rem 0;
+}
