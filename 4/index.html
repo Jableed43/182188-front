@@ -1,29 +1,107 @@
 <!DOCTYPE html>
+<!--
+  ============================================================================
+  index.html — Punto de entrada de la Clase 04
+  ----------------------------------------------------------------------------
+  Curso Front-End · Módulo 1: Arquitectura y Maquetación Moderna
+  Unidad 04 · HTML Semántico + Formularios + Multimedia
+
+  CÓMO USAR ESTA CARPETA:
+   1. Abrí esta carpeta (4) en Visual Studio Code.
+   2. Clic derecho sobre index.html → "Open with Live Server".
+   3. Recorré los ejemplos en orden usando los enlaces de abajo.
+   4. Leé los COMENTARIOS del código fuente de cada archivo: ahí está la
+      explicación de cada etiqueta y el "por qué" de cada decisión.
+  ============================================================================
+-->
 <html lang="es">
 <head>
+    <!-- charset UTF-8: permite acentos y ñ sin que se rompan -->
     <meta charset="UTF-8">
+    <!-- viewport: hace que la página se adapte a la pantalla del celular -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clase 04 - HTML Semántico + Formularios + Multimedia</title>
+    <title>Clase 04 — HTML Semántico, Formularios y Multimedia</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <h1>Clase 04 - HTML Semántico + Formularios + Multimedia</h1>
-    <p>Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)</p>
 
-    <h2>Índice de ejemplos</h2>
-    <nav>
-        <ul>
-            <li><a href="semantica.html">1. HTML Semántico (layout con header, main, aside, footer)</a></li>
-            <li><a href="aria.html">2. Accesibilidad: atributos ARIA</a></li>
-            <li><a href="formulario.html">3. Formularios y el universo &lt;input&gt;</a></li>
-            <li><a href="multimedia.html">4. Multimedia, iframes y elementos embebidos</a></li>
-            <li><a href="visibilidad.html">5. display:none vs visibility:hidden</a></li>
-            <li><a href="desafio_clase.html">6. Desafío de clase (formulario de registro)</a></li>
-        </ul>
-    </nav>
+    <!-- <header>: cabecera de la página. Va el título principal y presentación -->
+    <header>
+        <h1>Clase 04 — HTML Semántico, Formularios y Multimedia</h1>
+        <p>Módulo 1: Arquitectura y Maquetación Moderna · Unidad 04</p>
+    </header>
 
-    <hr>
+    <!-- <main>: el contenido central y único de esta página -->
+    <main>
+
+        <section>
+            <h2>¿Qué vamos a aprender?</h2>
+            <p>En esta clase dejamos de "dibujar cajas" con <code>&lt;div&gt;</code>
+               y empezamos a escribir HTML con <strong>significado</strong>. Vas a poder:</p>
+            <ul>
+                <li>Estructurar una página con etiquetas semánticas
+                    (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>,
+                    <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>…).</li>
+                <li>Construir formularios y dominar los tipos de <code>&lt;input&gt;</code>.</li>
+                <li>Insertar imágenes, audio, video e iframes.</li>
+                <li>Entender la accesibilidad básica (ARIA) y por qué importa.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Recorrido de ejemplos (en orden)</h2>
+
+            <!-- <nav>: zona reservada para enlaces de navegación -->
+            <nav>
+                <ol>
+                    <li>
+                        <a href="semantica.html">1. HTML Semántico</a>
+                        — el layout con <code>header</code>, <code>main</code>,
+                        <code>section</code>, <code>article</code>,
+                        <code>aside</code> y <code>footer</code>.
+                    </li>
+                    <li>
+                        <a href="aria.html">2. Accesibilidad (ARIA)</a>
+                        — <code>role</code>, <code>aria-label</code> y <code>tabindex</code>.
+                    </li>
+                    <li>
+                        <a href="formulario.html">3. Formularios</a>
+                        — el universo <code>&lt;input&gt;</code>, <code>label</code>,
+                        <code>select</code>, <code>textarea</code> y GET vs POST.
+                    </li>
+                    <li>
+                        <a href="multimedia.html">4. Multimedia</a>
+                        — <code>img</code>, <code>audio</code>, <code>video</code> e iframes.
+                    </li>
+                    <li>
+                        <a href="visibilidad.html">5. display:none vs visibility:hidden</a>
+                        — cómo ocultar elementos (adelanto de CSS).
+                    </li>
+                    <li>
+                        <a href="desafio_clase.html">6. Desafío de clase</a>
+                        — armá tu propio formulario de registro (con solución comentada).
+                    </li>
+                </ol>
+            </nav>
+        </section>
+
+        <!-- <aside>: contenido secundario, relacionado pero no esencial -->
+        <aside>
+            <div class="tip">
+                <strong>✅ Consejo:</strong> no te limites a mirar la página
+                renderizada. Abrí el código de cada archivo (en VS Code o con
+                <code>Ctrl+U</code> en el navegador) y leé los comentarios: ahí
+                está explicado cada concepto paso a paso.
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- <footer>: pie de página. Copyright, datos, enlaces legales, etc. -->
     <footer>
-        <p>Curso Front-End &middot; Unidad 04 &middot; Centro de e-learning</p>
+        <hr>
+        <p>Curso Front-End · Unidad 04 · Centro de e-Learning UTN.BA</p>
     </footer>
+
 </body>
 </html>

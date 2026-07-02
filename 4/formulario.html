@@ -1,85 +1,143 @@
-<!-- FORMULARIOS: el buzón de recolección de datos.
-     El <input> es el elemento más versátil de HTML: su comportamiento cambia
-     radicalmente según el atributo type.
-     OJO con el atributo name: sin él, el servidor no sabe qué dato es cuál. -->
-
 <!DOCTYPE html>
+<!--
+  ============================================================================
+  formulario.html — FORMULARIOS: tu buzón de recolección de datos
+  ----------------------------------------------------------------------------
+  Hasta ahora la web era de una sola vía: nosotros mostrábamos información.
+  Con los formularios, el USUARIO nos envía datos (login, registro, contacto,
+  pagos, búsquedas…).
+
+  LAS 3 PIEZAS CLAVE
+    <form>   → el contenedor. Define A DÓNDE se envían los datos (action) y
+               CÓMO viajan (method: GET o POST).
+    <label>  → el texto descriptivo de un campo.
+    <input>  → la "caja" donde el usuario escribe/elige. Es el elemento MÁS
+               versátil de HTML: cambia por completo según su atributo type.
+
+  ATRIBUTOS QUE NO PODÉS OLVIDAR
+    name  → el "nombre" del dato. SIN name, el servidor no sabe qué dato es cuál.
+    id    → identificador único, sirve para enlazar el <label> con su <input>.
+    for   → (en el label) debe ser IDÉNTICO al id del input al que describe.
+            Beneficio: al clickear el texto del label, el cursor salta al input.
+
+  GET vs POST (cómo viajan los datos)
+    GET  → viajan VISIBLES en la URL. Se guardan en el historial y se pueden
+           compartir. Ideal para buscadores y filtros. Inseguro para datos privados.
+    POST → viajan OCULTOS en el cuerpo del mensaje. No se ven en la URL.
+           Obligatorio para contraseñas, tarjetas y archivos pesados.
+  ============================================================================
+-->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formularios - El universo input</title>
+    <title>3 · Formularios — El universo &lt;input&gt;</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-    <h1>El universo &lt;input&gt;</h1>
+    <p class="migas"><a href="index.html">← Índice</a> · <a href="aria.html">Anterior</a></p>
 
-    <!-- Enviamos los datos ocultos por POST al servidor imaginario /registro.
-         GET  -> datos visibles en la URL (buscadores, filtros)
-         POST -> datos ocultos en el cuerpo (login, contraseñas, archivos) -->
+    <h1>El universo <code>&lt;input&gt;</code></h1>
+
+    <div class="nota">
+        <strong>💡 Probalo:</strong> completá algunos campos y apretá el botón de
+        enviar. Como el formulario apunta a un servidor imaginario
+        (<code>/registro</code>), no va a pasar "nada real", pero vas a ver saltar
+        las <strong>validaciones nativas</strong> del navegador (los avisos rojos)
+        cuando falte algo obligatorio o el formato esté mal.
+    </div>
+
+    <!--
+      <form>:
+        action="/registro" → dirección del servidor que recibirá los datos.
+        method="POST"       → los datos van ocultos (es un registro con contraseña).
+    -->
     <form action="/registro" method="POST">
 
-        <!-- LABEL + INPUT: el atributo 'for' del label debe ser IDÉNTICO al 'id'
-             del input. Así, al clickear el texto, el cursor salta dentro del input. -->
+        <h2>Campos de texto y sus validaciones</h2>
+
+        <!-- type="text": texto libre.
+             required   → el campo es obligatorio.
+             placeholder→ texto guía que desaparece al escribir (NO es el valor). -->
         <p>
-            <label for="nombre_usuario">Nombre Completo:</label>
-            <input type="text" id="nombre_usuario" name="nombre_real" placeholder="Ej: Juan Perez" required>
+            <label for="nombre_usuario">Nombre completo:</label><br>
+            <input type="text" id="nombre_usuario" name="nombre_real"
+                   placeholder="Ej: Juan Pérez" required>
         </p>
 
+        <!-- type="password": oculta los caracteres con puntitos -->
         <p>
-            <label for="clave">Crea una Contraseña:</label>
+            <label for="clave">Creá una contraseña:</label><br>
             <input type="password" id="clave" name="password_secreta" required>
         </p>
 
+        <!-- type="email": el navegador valida SOLO que tenga formato de email
+             (que haya @ y un dominio). No verifica que el mail exista de verdad. -->
         <p>
-            <label for="correo">Tu E-mail de contacto:</label>
-            <input type="email" id="correo" name="email_contacto">
+            <label for="correo">Tu e-mail de contacto:</label><br>
+            <input type="email" id="correo" name="email_contacto"
+                   placeholder="nombre@ejemplo.com">
         </p>
 
+        <h2>Campos numéricos, de fecha y especiales</h2>
+
+        <!-- type="number": muestra flechitas y solo acepta números.
+             min/max → limitan el rango permitido. -->
         <p>
-            <label for="edad">Edad:</label>
+            <label for="edad">Edad:</label><br>
             <input type="number" id="edad" name="edad" min="0" max="120">
         </p>
 
+        <!-- type="tel": en el celular abre el teclado numérico -->
         <p>
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono">
+            <label for="telefono">Teléfono:</label><br>
+            <input type="tel" id="telefono" name="telefono" placeholder="Solo números">
         </p>
 
+        <!-- type="date": despliega un calendario nativo del navegador -->
         <p>
-            <label for="nacimiento">Fecha de nacimiento:</label>
+            <label for="nacimiento">Fecha de nacimiento:</label><br>
             <input type="date" id="nacimiento" name="nacimiento">
         </p>
 
+        <!-- type="color": abre una paleta para elegir un color -->
         <p>
-            <label for="favorito">Color favorito:</label>
+            <label for="favorito">Color favorito:</label><br>
             <input type="color" id="favorito" name="favorito">
         </p>
 
+        <!-- type="range": un deslizador. Útil para volumen, precios, filtros. -->
         <p>
-            <label for="volumen">Volumen:</label>
+            <label for="volumen">Volumen (0 a 100):</label><br>
             <input type="range" id="volumen" name="volumen" min="0" max="100">
         </p>
 
+        <!-- type="file": abre el explorador de archivos del sistema -->
         <p>
-            <label for="adjunto">Subí tu CV:</label>
+            <label for="adjunto">Subí tu CV:</label><br>
             <input type="file" id="adjunto" name="adjunto">
         </p>
 
-        <!-- FIELDSET + LEGEND: agrupación semántica de opciones.
-             RADIO: opción única (ambos comparten name="plan" para competir entre sí) -->
+        <h2>Elegir entre opciones</h2>
+
+        <!-- RADIO (opción única):
+             La MAGIA está en que ambos comparten el mismo name="plan".
+             Al compartir name, "compiten" entre sí y solo se puede elegir UNO.
+             <fieldset> los agrupa y <legend> les pone un título accesible. -->
         <fieldset>
-            <legend>Elige tu Plan de Suscripción</legend>
-            <input type="radio" name="plan" id="basico" value="plan_basico">
+            <legend>Elegí tu plan de suscripción (radio = solo uno)</legend>
+            <input type="radio" name="plan" id="basico" value="plan_basico" checked>
             <label for="basico">Plan Básico (Gratis)</label>
             <br>
             <input type="radio" name="plan" id="pro" value="plan_pro">
             <label for="pro">Plan Profesional ($10)</label>
         </fieldset>
 
-        <!-- CHECKBOX: permite seleccionar varias opciones a la vez -->
+        <!-- CHECKBOX (opción múltiple):
+             Cada uno es independiente → se pueden marcar VARIOS a la vez. -->
         <fieldset>
-            <legend>Intereses</legend>
+            <legend>Tus intereses (checkbox = varios a la vez)</legend>
             <input type="checkbox" name="interes" id="html" value="html">
             <label for="html">HTML</label>
             <input type="checkbox" name="interes" id="css" value="css">
@@ -88,15 +146,22 @@
             <label for="js">JavaScript</label>
         </fieldset>
 
-        <!-- TEXTAREA: para párrafos / comentarios largos. Se puede estirar.
-             SELECT + OPTION: lista desplegable -->
+        <h2>Texto largo y listas desplegables</h2>
+
+        <!-- <textarea>: para textos largos (comentarios, descripciones).
+             A diferencia de <input>, tiene apertura y cierre, y se puede
+             estirar. rows/cols definen su tamaño inicial. -->
         <p>
             <label for="mensaje">Tu consulta:</label><br>
-            <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea>
+            <textarea id="mensaje" name="mensaje" rows="4" cols="50"
+                      placeholder="Escribí acá tu mensaje…"></textarea>
         </p>
 
+        <!-- <select> + <option>: lista desplegable.
+             El <select> es el contenedor; cada <option> es una opción elegible.
+             El value es lo que se ENVÍA; el texto entre etiquetas es lo que se VE. -->
         <p>
-            <label for="pais">País:</label>
+            <label for="pais">País:</label><br>
             <select id="pais" name="pais">
                 <option value="ar">Argentina</option>
                 <option value="br">Brasil</option>
@@ -104,10 +169,26 @@
             </select>
         </p>
 
-        <!-- SUBMIT: gatilla el envío del formulario -->
-        <button type="submit">Enviar mis datos al Servidor</button>
+        <!-- type="submit": el botón que DISPARA el envío del formulario -->
+        <button type="submit">Enviar mis datos al servidor</button>
 
     </form>
+
+    <div class="importante">
+        <strong>⚠️ El error #1 de los principiantes:</strong> olvidarse el
+        atributo <code>name</code>. Un input sin <code>name</code> se ve igual en
+        pantalla… pero su dato NUNCA llega al servidor. Si un campo "no se envía",
+        revisá primero el <code>name</code>.
+    </div>
+
+    <div class="tip">
+        <strong>✅ Buena práctica:</strong> conectá SIEMPRE cada
+        <code>&lt;label&gt;</code> con su input usando <code>for</code> = <code>id</code>.
+        Mejora la usabilidad (clic en el texto = foco en el campo) y la
+        accesibilidad (el lector de pantalla sabe qué campo estás completando).
+    </div>
+
+    <p class="migas"><a href="multimedia.html">Siguiente: 4 · Multimedia →</a></p>
 
 </body>
 </html>

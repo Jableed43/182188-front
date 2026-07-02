@@ -1,53 +1,114 @@
-<!-- MULTIMEDIA, ELEMENTOS EMBEBIDOS Y CONTROL DE VISIBILIDAD
-     HTML5 nos da etiquetas nativas para imágenes, audio, video e iframes,
-     sin necesidad de plugins de terceros (como el viejo Flash). -->
-
 <!DOCTYPE html>
+<!--
+  ============================================================================
+  multimedia.html — MULTIMEDIA y ELEMENTOS EMBEBIDOS
+  ----------------------------------------------------------------------------
+  HTML5 trae etiquetas NATIVAS para imágenes, audio, video e incrustar otras
+  páginas. Ya no hacen falta plugins externos (como el viejo Flash).
+
+  LO QUE VAMOS A VER
+    <img>    → imágenes.            Atributo clave: alt (obligatorio).
+    <video>  → video.              Atributos: src, controls, autoplay, loop, muted.
+    <audio>  → audio.              Comparte los mismos atributos que video.
+    <iframe> → "portal": incrusta otra web (Maps, YouTube, Spotify…) en un
+               rectángulo dentro de la nuestra.
+
+  LOCAL vs REMOTO
+    • Local  → el archivo vive dentro de tu proyecto (ej: "videos/intro.mp4").
+    • Remoto → apuntás a una URL de internet (una API, YouTube, etc.).
+    En este ejemplo usamos archivos REMOTOS para que reproduzcan sin descargar
+    nada. En los comentarios te dejamos también la sintaxis con archivo local.
+  ============================================================================
+-->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multimedia y elementos embebidos</title>
+    <title>4 · Multimedia y elementos embebidos</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
+    <p class="migas"><a href="index.html">← Índice</a> · <a href="formulario.html">Anterior</a></p>
+
     <h1>Multimedia y elementos embebidos</h1>
 
-    <!-- IMG: el atributo alt es OBLIGATORIO en el mundo profesional.
-         Sirve de respaldo si la imagen no carga y es clave para lectores de pantalla. -->
-    <h2>Imágenes</h2>
-    <img src="https://http.cat/images/200.jpg" alt="Gato representando el código HTTP 200 OK" width="300">
+    <!-- ===================== IMÁGENES ===================== -->
+    <h2>1. Imágenes: <code>&lt;img&gt;</code></h2>
 
-    <!-- VIDEO: atributos clave
-         src      -> ruta del archivo
-         controls -> muestra los botones del reproductor
-         autoplay -> reproduce al cargar (invasivo, usar con moderación)
-         loop     -> reinicia al terminar (bucle)
-         muted    -> inicia sin sonido (los navegadores lo exigen para el autoplay) -->
-    <h2>Video</h2>
-    <video src="videos/lluvia-fondo.mp4" width="100%" autoplay controls muted loop>
-        Tu navegador no soporta la etiqueta video.
-    </video>
+    <!-- <img> es una etiqueta "vacía" (no lleva cierre </img>).
+         src    → de dónde sale la imagen.
+         alt    → texto alternativo. OBLIGATORIO en el mundo profesional:
+                  1) se muestra si la imagen no carga,
+                  2) lo lee el lector de pantalla para personas ciegas,
+                  3) ayuda al SEO.
+         width  → ancho en píxeles (la altura se ajusta sola para no deformar). -->
+    <div class="demo">
+        <img src="https://http.cat/images/200.jpg"
+             alt="Gato ilustrando el código HTTP 200 (OK)" width="300">
+    </div>
 
-    <!-- AUDIO: comparte los mismos atributos de control que video -->
-    <h2>Audio</h2>
-    <audio src="mi-audio.mp3" controls>
-        Tu navegador no soporta la etiqueta audio.
-    </audio>
+    <div class="importante">
+        <strong>⚠️ El <code>alt</code> no es opcional.</strong> Una imagen sin
+        <code>alt</code> es invisible para quien usa lector de pantalla y penaliza
+        el SEO. Describí lo que se VE, no escribas "imagen de…".
+    </div>
 
-    <!-- IFRAME: "portales mágicos". Incrustan una página entera o partes
-         interactivas (Google Maps, YouTube, Spotify, etc.) dentro de un rectángulo. -->
-    <h2>Iframe (mapa embebido)</h2>
-    <iframe
-        src="https://www.openstreetmap.org/export/embed.html?bbox=-58.45,-34.65,-58.35,-34.55&layer=mapnik"
-        width="600" height="450" style="border:0;" allowfullscreen loading="lazy">
-    </iframe>
+    <!-- ===================== VIDEO ===================== -->
+    <h2>2. Video: <code>&lt;video&gt;</code></h2>
 
-    <p>
-        Las etiquetas multimedia permiten archivos <strong>locales</strong>
-        (dentro del proyecto) y <strong>remotos</strong> (una URL externa, una API
-        o una plataforma de streaming).
-    </p>
+    <!-- Atributos de control (van SIN valor, solo con nombrarlos se activan):
+           controls → muestra los botones (play, volumen, barra). Sin esto el
+                      usuario no puede interactuar.
+           autoplay → arranca solo al cargar (invasivo: usar con criterio).
+           muted    → arranca sin sonido. Los navegadores EXIGEN muted para
+                      permitir el autoplay (si no, lo bloquean).
+           loop     → vuelve a empezar al terminar (bucle infinito).
+         El texto interno se muestra si el navegador no soporta <video>. -->
+    <div class="demo">
+        <video src="https://www.w3schools.com/html/mov_bbb.mp4"
+               width="100%" controls muted loop>
+            Tu navegador no soporta la etiqueta &lt;video&gt;.
+        </video>
+    </div>
+
+    <div class="nota">
+        <strong>💡 Con archivo local</strong> sería igual, cambiando solo el src:
+        <br><code>&lt;video src="videos/intro.mp4" controls&gt;&lt;/video&gt;</code>
+        (la carpeta <code>videos/</code> tiene que existir dentro de tu proyecto).
+    </div>
+
+    <!-- ===================== AUDIO ===================== -->
+    <h2>3. Audio: <code>&lt;audio&gt;</code></h2>
+
+    <!-- Mismos atributos de control que <video>. Acá solo usamos controls. -->
+    <div class="demo">
+        <audio src="https://www.w3schools.com/html/horse.mp3" controls>
+            Tu navegador no soporta la etiqueta &lt;audio&gt;.
+        </audio>
+    </div>
+
+    <!-- ===================== IFRAME ===================== -->
+    <h2>4. Iframe: los "portales mágicos"</h2>
+
+    <!-- <iframe> incrusta OTRA página dentro de la nuestra: mapas, videos de
+         YouTube, reproductores de Spotify, pasarelas de pago, chats, etc.
+           loading="lazy" → carga el iframe solo cuando está por verse (rinde mejor). -->
+    <div class="demo">
+        <iframe
+            title="Mapa de ejemplo (OpenStreetMap)"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-58.45,-34.65,-58.35,-34.55&layer=mapnik"
+            width="100%" height="350" style="border:0;" allowfullscreen loading="lazy">
+        </iframe>
+    </div>
+
+    <div class="tip">
+        <strong>✅ ¿Para qué se usan los iframes?</strong> Para reutilizar cosas
+        que ya existen sin reprogramarlas (un mapa, un video de YouTube) y para
+        aislar de forma segura componentes de terceros (pagos, widgets de chat).
+    </div>
+
+    <p class="migas"><a href="visibilidad.html">Siguiente: 5 · Ocultar elementos →</a></p>
 
 </body>
 </html>
