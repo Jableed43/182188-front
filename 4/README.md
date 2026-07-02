@@ -33,7 +33,7 @@ etiqueta.
 | `visibilidad.html` | `display:none` vs `visibility:hidden` (adelanto de CSS) |
 | `desafio_clase.html` | Desafío integrador con solución comentada |
 | `css/estilos.css` | Estilos solo para legibilidad (el CSS se estudia en la Clase 05) |
-| `04_Presentacion.txt` | Texto de la presentación original, como referencia |
+| `04_Presentacion.md` | Apunte completo de la clase en Markdown (abrilo con `Ctrl+Shift+V` en VS Code) |
 
 ## 📝 Desafío
 
