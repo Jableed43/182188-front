@@ -1,0 +1,31 @@
+/* Por Federico Gimenez: El padding funciona como el relleno de diario o espuma que viene dentro de unas zapatillas nuevas. Para ocupar espacio y dar forma. */
+/* Por natalia figueroa: da aire entre el contenido y la caja que lo contiene. Ademas de estético ayuda a la lectura */
+
+/* Selector universal para todos los elementos, es debil */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* El margen separa elementos de otros como una pared invisible */
+div.ejemplo{
+    margin: 20px;
+    padding: 20px;
+    /* ancho de linea, color de linea */
+    border: 3px #227dcd;
+    /* tipo de linea */
+    border-style: dashed;
+    border-bottom-width: 6px;
+    border-top-color: chocolate;
+    /* "redondear borde inferior izquierdo en 20px" */
+    border-bottom-left-radius: 20px;
+    border-right-style: dotted;
+}
+
+div.ejemplo-2{
+    margin: 20px;
+    padding: 20px;
+    border: 3px solid #227dcd;
+    width: 250px;
+}

@@ -1,0 +1,36 @@
+/* El ultimo elemento del selector es el afectado */
+
+/* Este selector de ID solo afecta a #principal */
+/* Este simbolo identifica a los ID's "#" */
+#principal {
+    color: #2b6cb0;
+}
+
+/* Este selector de etiqueta afecta a todos los P */
+p{
+    color: #d5784d;    
+}
+
+/* Como afectar a un elemento adyacente a otro? */
+/* h2 + p afecta solo al primer adyacente */
+/* h2 + p + p afecta al segundo adyacente */
+h2 + p , h2 + p + p{
+    font-style: italic;
+}
+
+/* Esto afecta a todos los parrafos adyacentes del h2, TODOS sin importar cuantos sean */
+h2 ~ p {
+    text-decoration: underline;
+}
+
+/* Este simbolo identifica a las clases "." */
+/* Si tenemos dos clases de css que trabajan sobre la misma propiedad pero tienen diferente valor, la ultima escriba en el .css es la que va a ser priorizada */
+.destacado{
+    font-weight: 900;
+    color: blue;
+}
+
+.destacado-rojo{
+    color: red !important;
+}
+
