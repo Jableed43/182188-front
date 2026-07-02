@@ -1,0 +1,310 @@
+En momentos comenzamos
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+HTML Semántico + Formularios + Multimedia
+Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+Clase 04
+HTML Semántico: El Poder del Significado
+Formularios: Tu buzón de recolección de datos
+Multimedia, Elementos Embebidos y Control de Visibilidad
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+Objetivos de la Clase
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+Objetivos de la Clase
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+• Implementar etiquetas semánticas (<header>, <main>, <aside>, <article>) de forma correcta.
+
+• Dominar el catálogo exhaustivo de tipos de input (email, date, color, etc.) y sus validaciones.
+
+• Comprender la accesibilidad web básica mediante atributos ARIA y semántica.
+
+HTML Semántico: El Poder del Significado
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+HTML Semántico: El Poder del Significado
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+¿Qué es HTML Semántico?
+Para construir interfaces web profesionales y modernas, no basta con agrupar elementos de manera visual en la pantalla. Es indispensable comprender cómo estructurar la información para que sea legible tanto para los usuarios como para los motores de búsqueda y las tecnologías asistivas. El verdadero desarrollo web profesional comienza cuando dejamos atrás las viejas prácticas de maquetación y adoptamos un enfoque estrictamente semántico.
+
+El control de los divs
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+• La evolución histórica (La "Divitis"): En los inicios de la web, se usaba la etiqueta genérica <div> para envolver absolutamente todo de forma estructural. No importaba si era un menú, un artículo o el pie de página; todo era un <div> con clases.
+
+• Semántica: Significa utilizar la etiqueta HTML específica que describa con precisión el significado y la función del contenido que lleva dentro, en lugar de usar etiquetas genéricas y preocuparnos solo por cómo se ve visualmente.
+⚠️ IMPORTANTE
+A tener en cuenta: Al usar HTML semántico (<header>, <article>, <nav>, <footer>), no estamos cambiando el diseño de la página, sino que le estamos dando "ojos" a los motores de búsqueda (SEO) y a los lectores de pantalla para personas con discapacidad visual. Es pasar de estructurar para la pantalla a estructurar para el significado.
+
+¿Por qué es vital usar semántica?
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+• SEO (Posicionamiento en Google): Los robots exploradores leen el código. Si usas <main>, el robot sabe de inmediato que allí está el corazón de tu web.
+
+• Accesibilidad (A11y): Las personas con discapacidades visuales utilizan Lectores de Pantalla. La semántica guía al usuario: 'Estás entrando en la barra de navegación principal'.
+
+Ventajas vs Desventajas
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+✅ Ventajas (Pros)
+❌ Desventajas (Contras)
+Accesibilidad perfecta: Los lectores de pantalla interpretan y estructuran la página al instante, mejorando la experiencia de usuarios con discapacidad visual.
+Curva de aprendizaje inicial: Exige cambiar el chip mental y aprender el criterio de uso correcto para cada etiqueta en lugar de tirar un <div>.
+SEO Mejorado exponencialmente: Google indexará y posicionará mucho mejor tu página porque entiende de qué trata tu contenido.
+Requiere mayor tiempo de desarrollo: No sale "automáticamente". Exige planificar la estructura de la página con cuidado y mantener la disciplina de código en todo el proyecto.
+
+Las Etiquetas que dan Arquitectura (Layout)
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+• <footer>: El pie, cierre de la página o de una sección. Se usa para poner información de copyright, datos de contacto, enlaces legales o redes sociales. 
+
+• <section>: Una gran sección temática. Agrupa contenido que está relacionado por un mismo tema general. Pensalo como los "capítulos" de un libro. Casi siempre debería arrancar con un título <h2>-<h6>.
+
+• <article>: Se usa para contenido que es totalmente independiente y autocontenido. La prueba de fuego es: si lo cortás de tu web y lo pegás en otra página (o en un feed de noticias), ¿se sigue entendiendo por sí solo? . Por ejemplo un post de un blog, una review de un producto, un comentario de un usuario o una card de producto.
+
+Las Etiquetas que dan Arquitectura (Layout)
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+• <header>: Encabezado que define la cabecera de la página o de una sección. Suele contener el logo, el título principal y, a veces, un buscador. Puede haber más de un header en la página, por ejemplo, dentro de un artículo.
+
+• <nav>: Reserva el espacio exclusivo para los bloques de enlaces de navegación. Como el menú principal, el menú del footer o un índice de contenidos.
+
+• <main>: Envuelve el contenido central y exclusivo de la página. Es único: no puede haber más de un <main> por documento.
+
+• <aside>: Aloja información que está relacionada tangencialmente con el contenido principal, pero que si la sacás, la página se sigue entendiendo igual, se considera contenido secundario. Como por ejemplo barras laterales, publicidad, widgets de clima o enlaces a artículos relacionados.
+
+
+Las Etiquetas que dan Arquitectura (Layout)
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+Atributos ARIA (Accessible Rich Internet Applications)
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+• role="button": Le avisa al lector que este elemento actúa como un botón interactivo.
+
+• aria-label="...": Le otorga un nombre descriptivo a un botón visual (ej: una X para cerrar).
+
+• tabindex: Permite que un elemento sea enfocable con la tecla TAB (0 entra en orden, -1 lo ignora).
+
+Formularios
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+Formularios
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+¿Qué son los Formularios?
+Hasta ahora, la comunicación de nuestra web era unidireccional. Con los formularios, el usuario puede enviarnos datos. 
+
+El elemento <input> es el más versátil de HTML y su comportamiento cambia radicalmente según el atributo type.
+
+Se suelen usar para:
+Login
+Registro
+Modificación de perfil de usuario
+Pasarelas de pago
+Contacto y soporte
+Creación de contenido
+Buscadores y filtros avanzados
+
+Los Controles de Usuario: El universo <input>
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+Tipo (type)
+Uso Principal
+Características
+text
+Nombres, búsquedas.
+El valor por defecto. Texto simple.
+password
+Contraseñas.
+Oculta los caracteres con puntos o asteriscos.
+email
+Correos electrónicos.
+Valida automáticamente que tenga un formato @ y .com.
+number
+Edades, cantidades.
+Muestra flechitas para subir/bajar y solo permite números.
+tel
+Teléfonos.
+Abre el teclado numérico en celulares.
+date
+Fechas.
+Abre un calendario desplegable nativo del navegador.
+color
+Selector de color.
+Abre una paleta de colores para que el usuario elija.
+
+Los Controles de Usuario: El universo <input> (cont.)
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+Tipo (type)
+Uso Principal
+Características
+checkbox
+Opciones múltiples.
+Permite seleccionar varias opciones al mismo tiempo.
+radio
+Opción única.
+Obliga a elegir solo una opción de un grupo.
+range
+Deslizador.
+Útil para volumen, precios o filtros de rango.
+file
+Subida de archivos.
+Abre el explorador de archivos del sistema.
+submit
+Botón de envío.
+El botón que gatilla la acción de enviar el formulario.
+⚠️ IMPORTANTE
+Atributo Name: Nunca olvides poner el atributo name a tus inputs. Sin él, el servidor no sabrá qué dato es cuál cuando reciba el formulario.
+
+Los distintos
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+1. <textarea>:  Se usa cuando el <input type="text"> queda chico. Está pensado para párrafos, comentarios o descripciones. A diferencia de un input común, este se puede estirar visualmente y es una etiqueta de apertura y cierre.
+2. <select> y <option>: Se usan en combo para crear listas desplegables. El <select> es el contenedor principal (el componente interactivo) y los <option> son cada uno de los elementos que el usuario puede elegir.
+<label for="mensaje">Tu consulta:</label>
+<textarea id="mensaje" rows="4" cols="50"></textarea>
+<label for="pais">País:</label>
+
+<select id="pais"> 
+<option for="ar">Argentina:</option>
+<option for="br">Brasil:</option>
+</select>
+
+La conexión vital de usabilidad: Label e Input
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+• El <input> es la caja y el <label> es el texto descriptivo.
+
+• Para conectarlos, el atributo 'for' del label debe ser idéntico al 'id' del input.
+
+• Al hacer clic en el texto del label, el cursor salta mágicamente dentro del input, mejorando brutalmente la UX.
+
+Métodos de Transporte HTTP: GET vs POST
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+Característica
+Método GET (Público y Rápido)
+Método POST (Privado y Seguro)
+¿Cómo viajan los datos?
+Visibles en la URL del navegador.
+Ocultos en el cuerpo del mensaje hacia el servidor.
+Nivel de Seguridad
+Inseguro. Cualquiera que mire la pantalla puede ver la información.
+Seguro. Es el método válido para contraseñas o tarjetas.
+Historial y Favoritos
+Se guardan en el historial. Se pueden compartir.
+No se puede compartir ni guardar en favoritos.
+Caso de Uso Real
+Buscadores web o filtros de productos.
+Registros de usuarios, Inicios de sesión (Login) y envío de archivos pesados.
+⚠️ IMPORTANTE
+Este tema se verá con mayor profundidad y dedicación más adelante
+
+Ejemplo de un Formulario Estructurado
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+<!-- Enviamos los datos ocultos por POST al servidor imaginario /registro -->
+<form action="/registro" method="POST">
+    <!-- El atributo 'for' debe ser IDÉNTICO al 'id' del input para vincularlos -->
+    <label for="nombre_usuario">Nombre Completo:</label>
+    <input type="text" id="nombre_usuario" name="nombre_real" placeholder="Ej: Juan Perez" required>
+    <label for="clave">Crea una Contraseña:</label>
+    <input type="password" id="clave" name="password_secreta" required>
+    <label for="correo">Tu E-mail de contacto:</label>
+    <input type="email" id="correo" name="email_contacto">
+    <!-- Agrupación Semántica de opciones (Radio Buttons) -->
+    <fieldset>
+        <legend>Elige tu Plan de Suscripción</legend>
+        <!-- Observa que ambos tienen name="plan" para que compitan entre sí -->
+        <input type="radio" name="plan" id="basico" value="plan_basico">
+        <label for="basico">Plan Básico (Gratis)</label>
+        <input type="radio" name="plan" id="pro" value="plan_pro">
+        <label for="pro">Plan Profesional ($10)</label>
+    </fieldset>
+    <button type="submit">Enviar mis datos al Servidor</button>
+</form>
+
+Multimedia, Elementos Embebidos y Control de Visibilidad
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+Multimedia, Elementos Embebidos y Control de Visibilidad
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+¿Qué son los Multimedia y Elementos Embebidos?
+El manejo de imágenes, audios, videos y la capacidad de integrar recursos externos o controlar cómo se muestran en pantalla de forma nativa nos brinda las herramientas esenciales para maquetar interfaces ricas, dinámicas y profesionales.
+
+Inserción de Imágenes
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+<img src="img/foto-perfil.jpg" alt="Hombre de 30 años sonriendo con camisa azul" width="300">
+⚠️ IMPORTANTE
+Atributo Alt: El atributo alt (Texto Alternativo) es estrictamente obligatorio en el mundo profesional. Sirve como respaldo si la imagen no carga y es esencial para los lectores de pantalla.
+
+Etiquetas Nativas de Audio y Video
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+• En la web moderna no necesitamos plugins de terceros (como Flash) para reproducir videos.
+
+• HTML5 nos da las etiquetas nativas <audio> y <video> que comparten los mismos atributos de control.
+Atributo
+Función Visual / Técnica
+src
+La ruta hacia tu archivo de video (.mp4) o audio (.mp3).
+controls
+Muestra los botones clásicos del reproductor. Sin esto, el usuario no podrá interactuar.
+autoplay
+Fuerza la reproducción al cargar. (Invasivo, usar con moderación).
+loop
+Reinicia automáticamente al terminar (bucle infinito).
+muted
+Obliga a iniciar sin sonido. (Los navegadores modernos lo exigen para permitir autoplay).
+
+Atributos Clave de Control Multimedia
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+<video src="videos/lluvia-fondo.mp4" width="100%" autoplay controls muted loop></video>
+<audio src="mi-audio.mp3" controls></audio>
+Tienen la flexibilidad de permitirnos utilizar archivos de audio y video local (guardados dentro de las carpetas de nuestro propio proyecto, ideales para sonidos de la interfaz o videos de fondo controlados) y también remoto, apuntando a una URL externa como API’s o plataformas de streaming o podcasts
+
+Iframes: Los portales mágicos
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+Nos permiten incrustar una página web entera o partes interactivas (como Google Maps, YouTube, Spotify o Redes Sociales) dentro de un rectángulo de nuestra propia página. También se usan para integrar sistemas antiguos (legacy) sin tener que reescribir su código, y para aislar de forma segura componentes críticos de terceros, como pasarelas de pago o widgets de chat.
+
+En el siguiente ejemplo se ve un código de google maps incrustado
+<iframe src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+El duelo del renderizado: display: none vs visibility: hidden
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+Regla CSS
+¿Qué efecto visual tiene?
+¿Qué pasa con el espacio en la página?
+display: none;
+Desaparece totalmente.
+Físicamente desaparece. Los demás elementos se acomodan.
+visibility: hidden;
+Se vuelve invisible.
+Mantiene el hueco. Sigue ocupando su espacio físico exacto.
+A nivel visual, ambas propiedades hacen que un elemento deje de verse. Sin embargo, el navegador los procesa de formas completamente distintas en la estructura y el flujo de la página.
+
+Usa display: none; cuando quieras ocultar algo por completo y quieras que el resto del diseño aproveche ese espacio (por ejemplo, al colapsar un menú desplegable de navegación).
+
+Usa visibility: hidden; cuando necesites que un elemento desaparezca temporalmente (por ejemplo, un mensaje de error o un icono de carga), pero no quieras que todo el diseño de la página pegue un salto o se mueva de golpe al ocultarse.
+
+
+📝 Ejercicio de Clase
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+📝 Ejercicio de Clase
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+• Creá una estructura de layout semántica con <header>, <main>, y <footer>.
+• Dentro de <main>, creá un formulario de registro de contacto profesional.
+• El formulario debe contener:
+• Nombre (obligatorio, mínimo 3 caracteres).
+• Email (obligatorio, tipo email).
+• Contraseña (obligatorio, mínimo 8 caracteres).
+• Teléfono (validado con patrón numérico).
+• Un desplegable <select> para elegir el país.
+• Un checkbox para aceptar "Términos y condiciones".
+• Añadí un botón de tipo submit con diseño limpio. Probalo en el navegador intentando enviar datos incorrectos para ver las advertencias nativas.
+
+Documentación Oficial de Tecnologías
+CSS   https://developer.mozilla.org/es/docs/Web/CSS
+HTML   https://developer.mozilla.org/es/docs/Web/HTML
+JavaScript   https://developer.mozilla.org/es/docs/Web/JavaScript
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia
+
+¡Muchas Gracias!
+
+¡Hasta la próxima!
+
+Centro de e-learning
+Curso Front-End  /  Módulo 1: Arquitectura y Maquetación Moderna (HTML y CSS)  /  Unidad 04  /  HTML Semántico + Formularios + Multimedia

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  aria.html — ACCESIBILIDAD BÁSICA con atributos ARIA
+  ----------------------------------------------------------------------------
+  ¿QUÉ ES ARIA?
+  ARIA = "Accessible Rich Internet Applications". Es un conjunto de atributos
+  que le dan información EXTRA a las tecnologías asistivas (sobre todo a los
+  lectores de pantalla que usan las personas con discapacidad visual).
+
+  ATRIBUTOS QUE VEMOS EN ESTA CLASE
+    role="button"    → le avisa al lector que el elemento se comporta como botón.
+    aria-label="..." → le da un NOMBRE descriptivo a algo que visualmente es solo
+                       un ícono (ej: una "X" que en realidad significa "Cerrar").
+    tabindex         → controla si un elemento se puede enfocar con la tecla TAB:
+                         tabindex="0"  → entra en el orden natural de tabulación.
+                         tabindex="-1" → se puede enfocar por código, pero TAB lo ignora.
+
+  ⚠️ REGLA DE ORO DE ARIA: "No ARIA es mejor que ARIA mal usado".
+  Siempre que exista una etiqueta nativa que YA hace el trabajo (como
+  <button>, <a>, <input>), usala. Solo recurrís a ARIA cuando no te queda otra.
+  ============================================================================
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 · Accesibilidad — Atributos ARIA</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <p class="migas"><a href="index.html">← Índice</a> · <a href="semantica.html">Anterior</a></p>
+
+    <h1>Accesibilidad web básica con ARIA</h1>
+
+    <div class="nota">
+        <strong>💡 Probalo con el teclado:</strong> hacé clic en cualquier lado
+        de la página y después andá apretando la tecla <kbd>TAB</kbd>. Vas a ver
+        cómo el foco (el recuadro) va saltando de un elemento a otro. Eso es lo
+        que "recorre" una persona que no usa el mouse.
+    </div>
+
+    <h2>1. Un botón "falso" hecho accesible</h2>
+
+    <!-- Esto es un <div> (que por defecto NO es interactivo ni enfocable).
+         Lo convertimos en un botón accesible con 3 atributos:
+           role="button"   → el lector lo anuncia como botón.
+           aria-label      → le da el nombre "Cerrar ventana" (porque visualmente
+                             solo se ve una X, que sin contexto no dice nada).
+           tabindex="0"    → permite llegar a él con la tecla TAB. -->
+    <div class="demo">
+        <span role="button" aria-label="Cerrar ventana" tabindex="0"
+              style="display:inline-block; border:1px solid #333; padding:8px 14px; border-radius:6px; cursor:pointer;">
+            ✕
+        </span>
+        <p>
+            Arriba hay un <code>&lt;span&gt;</code> con una "✕". Para vos se ve
+            como una X, pero para un lector de pantalla se anuncia como
+            <em>"Cerrar ventana, botón"</em> gracias a <code>role</code> y
+            <code>aria-label</code>.
+        </p>
+    </div>
+
+    <div class="importante">
+        <strong>⚠️ Ojo:</strong> este ejemplo es DIDÁCTICO. En la vida real,
+        para un botón usá directamente <code>&lt;button&gt;Cerrar&lt;/button&gt;</code>:
+        ya es enfocable, clickeable con Enter y accesible sin agregar nada.
+    </div>
+
+    <h2>2. tabindex en acción</h2>
+    <div class="demo">
+        <!-- tabindex="0": este párrafo SÍ recibe foco al tabular -->
+        <p tabindex="0">Este párrafo es enfocable con TAB (<code>tabindex="0"</code>). Tabulá hasta acá y vas a ver el recuadro de foco.</p>
+
+        <!-- tabindex="-1": la navegación por teclado lo saltea -->
+        <p tabindex="-1">Este párrafo NUNCA recibe foco al tabular (<code>tabindex="-1"</code>).</p>
+    </div>
+
+    <h2>3. Bonus: el atributo <code>alt</code> también es accesibilidad</h2>
+    <div class="demo">
+        <!-- El alt describe la imagen para quien no puede verla -->
+        <img src="https://http.cat/images/200.jpg"
+             alt="Gato ilustrando el código HTTP 200 (OK)" width="200">
+        <p>Si la imagen no cargara, o si alguien usa lector de pantalla, se lee
+           el texto del <code>alt</code>. Por eso es obligatorio (lo vemos en
+           <a href="multimedia.html">Multimedia</a>).</p>
+    </div>
+
+    <div class="tip">
+        <strong>✅ Para llevar:</strong> la accesibilidad no es "un extra".
+        Un HTML semántico y con <code>alt</code>/<code>label</code> correctos ya
+        es accesible en un 90% <em>sin escribir ni un atributo ARIA</em>.
+    </div>
+
+    <p class="migas"><a href="formulario.html">Siguiente: 3 · Formularios →</a></p>
+
+</body>
+</html>

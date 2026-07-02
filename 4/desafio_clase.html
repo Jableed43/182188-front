@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  desafio_clase.html — DESAFÍO INTEGRADOR de la Clase 04
+  ----------------------------------------------------------------------------
+  📝 CONSIGNA
+   1. Armá una estructura semántica con <header>, <main> y <footer>.
+   2. Dentro de <main>, creá un formulario de registro de contacto profesional.
+   3. El formulario debe pedir:
+        • Nombre       → obligatorio, mínimo 3 caracteres.
+        • Email        → obligatorio, tipo email.
+        • Contraseña   → obligatoria, mínimo 8 caracteres.
+        • Teléfono     → validado para que solo acepte números.
+        • País         → un desplegable <select>.
+        • Términos     → un checkbox "Acepto términos y condiciones" (obligatorio).
+   4. Agregá un botón de tipo submit.
+   5. Probalo en el navegador enviando datos incorrectos para ver las
+      advertencias nativas del navegador.
+
+  💡 CÓMO USAR ESTE ARCHIVO
+  Abajo tenés una SOLUCIÓN completa y comentada. Lo ideal es que primero
+  intentes resolverlo por tu cuenta en un archivo nuevo y recién después
+  compares con esta versión.
+
+  🔑 ATRIBUTOS DE VALIDACIÓN QUE USAMOS (el navegador valida solo, sin JS)
+    required        → el campo no puede quedar vacío.
+    minlength="n"   → exige un mínimo de n caracteres.
+    type="email"    → exige formato de email (algo@algo.dominio).
+    pattern="..."   → exige que el texto cumpla una expresión regular.
+                      Ej: [0-9]{7,15} = entre 7 y 15 dígitos, solo números.
+  ============================================================================
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6 · Desafío de clase — Registro de contacto</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <p class="migas"><a href="index.html">← Índice</a> · <a href="visibilidad.html">Anterior</a></p>
+
+    <!-- ============ ESTRUCTURA SEMÁNTICA (punto 1 de la consigna) ============ -->
+
+    <!-- <header>: cabecera de la página con el título y la navegación -->
+    <header>
+        <h1>Registro de contacto profesional</h1>
+        <nav>
+            <a href="index.html">Volver al índice</a>
+        </nav>
+    </header>
+
+    <div class="nota">
+        <strong>💡 Probá a "romperlo":</strong> apretá <em>Registrarme</em> con
+        campos vacíos, o escribí letras en el teléfono, o una contraseña corta.
+        El navegador te va a frenar con avisos nativos. Eso es la validación de
+        formularios funcionando.
+    </div>
+
+    <!-- <main>: contenido central y único de la página -->
+    <main>
+
+        <!-- <form>: enviamos por POST porque hay una contraseña (datos privados) -->
+        <form action="/contacto" method="POST">
+
+            <!-- NOMBRE → obligatorio y con mínimo 3 caracteres -->
+            <p>
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre"
+                       minlength="3" placeholder="Al menos 3 letras" required>
+            </p>
+
+            <!-- EMAIL → obligatorio; type="email" valida el formato @dominio -->
+            <p>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email"
+                       placeholder="nombre@ejemplo.com" required>
+            </p>
+
+            <!-- CONTRASEÑA → obligatoria y con mínimo 8 caracteres -->
+            <p>
+                <label for="password">Contraseña:</label><br>
+                <input type="password" id="password" name="password"
+                       minlength="8" placeholder="Mínimo 8 caracteres" required>
+            </p>
+
+            <!-- TELÉFONO → pattern con [0-9]{7,15}: solo dígitos, de 7 a 15.
+                 title → mensaje de ayuda que muestra el navegador si no cumple. -->
+            <p>
+                <label for="telefono">Teléfono:</label><br>
+                <input type="tel" id="telefono" name="telefono"
+                       pattern="[0-9]{7,15}" title="Solo números (entre 7 y 15 dígitos)"
+                       placeholder="Solo números" required>
+            </p>
+
+            <!-- PAÍS → <select>. La primera opción vacía + required obliga a elegir
+                 un país real (no puede quedar en "-- Elegí tu país --"). -->
+            <p>
+                <label for="pais">País:</label><br>
+                <select id="pais" name="pais" required>
+                    <option value="">-- Elegí tu país --</option>
+                    <option value="ar">Argentina</option>
+                    <option value="br">Brasil</option>
+                    <option value="uy">Uruguay</option>
+                    <option value="cl">Chile</option>
+                </select>
+            </p>
+
+            <!-- TÉRMINOS → checkbox obligatorio. Con required, el navegador no deja
+                 enviar el formulario si no está tildado. -->
+            <p>
+                <input type="checkbox" id="terminos" name="terminos" required>
+                <label for="terminos">Acepto los Términos y Condiciones</label>
+            </p>
+
+            <!-- BOTÓN de envío -->
+            <button type="submit">Registrarme</button>
+
+        </form>
+    </main>
+
+    <!-- <footer>: cierre de la página -->
+    <footer>
+        <hr>
+        <p>&copy; 2026 Curso Front-End — Unidad 04.</p>
+    </footer>
+
+    <div class="tip">
+        <strong>✅ Para ir más allá (opcional):</strong> agregá un campo
+        <code>&lt;textarea&gt;</code> para un mensaje, un grupo de
+        <code>radio</code> para elegir "¿Cómo nos conociste?", y un
+        <code>&lt;fieldset&gt;</code> con <code>&lt;legend&gt;</code> para agrupar
+        las opciones. Repasá <a href="formulario.html">el ejemplo 3</a> si te trabás.
+    </div>
+
+</body>
+</html>

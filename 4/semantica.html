@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  semantica.html — HTML SEMÁNTICO: El Poder del Significado
+  ----------------------------------------------------------------------------
+  IDEA CENTRAL
+  En los inicios de la web se envolvía TODO en <div> (una enfermedad que los
+  desarrolladores llaman en broma "Divitis"). El problema: un <div> no dice
+  NADA sobre lo que contiene.
+
+  El HTML semántico consiste en usar la etiqueta que DESCRIBE el significado
+  del contenido (¿es la cabecera? ¿es el menú? ¿es un artículo?).
+
+  ⚠️ MUY IMPORTANTE: la semántica NO cambia cómo se ve la página. Cambia lo
+  que la página SIGNIFICA. Le da "ojos" a:
+    • Google y buscadores (SEO): entienden de qué trata tu web.
+    • Lectores de pantalla (accesibilidad): guían a personas con discapacidad
+      visual ("estás entrando en la navegación principal", etc.).
+
+  MAPA DE ETIQUETAS DE ESTRUCTURA (LAYOUT)
+    <header>  → cabecera de la página o de una sección (logo, título, buscador).
+                Puede haber varios (uno por página y uno dentro de cada article).
+    <nav>     → bloque de enlaces de navegación (menú principal, índice…).
+    <main>    → contenido central y ÚNICO. Solo puede haber UN <main> por página.
+    <section> → gran sección temática. Los "capítulos" de la página. Suele
+                empezar con un título (<h2>…<h6>).
+    <article> → contenido independiente y autocontenido. Prueba de fuego: si lo
+                cortás y lo pegás en otra web, ¿se sigue entendiendo solo?
+                (un post, una review, un comentario, una card de producto).
+    <aside>   → contenido secundario. Si lo sacás, la página se sigue entendiendo
+                (barras laterales, publicidad, widgets, enlaces relacionados).
+    <footer>  → pie o cierre (copyright, contacto, enlaces legales, redes).
+  ============================================================================
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 · HTML Semántico — Layout de un blog</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <!-- Migas de navegación entre los ejemplos de la clase -->
+    <p class="migas"><a href="index.html">← Volver al índice</a></p>
+
+    <div class="nota">
+        <strong>💡 Cómo leer este ejemplo:</strong> mirá primero el árbol de
+        etiquetas en el código fuente. Toda la página se arma como una muñeca
+        rusa: <code>header</code> arriba, <code>main</code> en el medio (con
+        <code>section</code> → <code>article</code> y un <code>aside</code>),
+        y <code>footer</code> al final. Ese es el esqueleto de casi cualquier web.
+    </div>
+
+    <!--
+      ================= COMIENZA LA PÁGINA DE EJEMPLO =================
+      A partir de acá simulamos un "Blog de Tecnología" real.
+    -->
+
+    <!-- <header>: la cabecera. Título del sitio + menú principal. -->
+    <header>
+        <h1>Mi Blog de Tecnología</h1>
+
+        <!-- <nav>: zona EXCLUSIVA de enlaces de navegación.
+             El lector de pantalla anuncia "navegación", ayudando a orientarse. -->
+        <nav>
+            <a href="#">Inicio</a> |
+            <a href="#">Artículos</a> |
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- <main>: el corazón de la página. RECORDÁ: solo puede haber uno. -->
+    <main>
+
+        <!-- <section>: agrupa contenido de un mismo tema. Empieza con título. -->
+        <section>
+            <h2>Últimos artículos</h2>
+
+            <!-- <article> #1: es autocontenido. Fijate que tiene su PROPIO
+                 <header> interno (sí, se puede anidar un header dentro de un
+                 article: es la cabecera de ESE artículo, no de la página). -->
+            <article>
+                <header>
+                    <h3>¿Qué es HTML Semántico?</h3>
+                    <!-- <time>: etiqueta semántica para fechas. El atributo
+                         datetime guarda la fecha en formato que la máquina lee. -->
+                    <p>Publicado el <time datetime="2026-06-29">29/06/2026</time></p>
+                </header>
+                <p>
+                    Para construir interfaces profesionales no basta con agrupar
+                    elementos visualmente. Hay que estructurar la información para
+                    que sea legible por usuarios, buscadores y tecnologías asistivas.
+                </p>
+            </article>
+
+            <!-- <article> #2: otro post independiente. Si lo copiaras a un feed
+                 de noticias, se entendería por sí solo. Esa es la clave. -->
+            <article>
+                <header>
+                    <h3>Adiós a la "Divitis"</h3>
+                    <p>Publicado el <time datetime="2026-06-28">28/06/2026</time></p>
+                </header>
+                <p>
+                    Antes se envolvía absolutamente todo en un <code>&lt;div&gt;</code>.
+                    Hoy usamos etiquetas específicas según la función del contenido.
+                </p>
+            </article>
+        </section>
+
+        <!-- <aside>: información complementaria. Si la borrás, el blog sigue
+             teniendo sentido. Ideal para "enlaces relacionados", widgets, etc. -->
+        <aside>
+            <h2>Enlaces relacionados</h2>
+            <ul>
+                <li><a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank">Documentación de HTML (MDN)</a></li>
+                <li><a href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank">Documentación de CSS (MDN)</a></li>
+            </ul>
+        </aside>
+
+    </main>
+
+    <!-- <footer>: el cierre de la página. -->
+    <footer>
+        <hr>
+        <p>&copy; 2026 Mi Blog de Tecnología — Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- ================= FIN DE LA PÁGINA DE EJEMPLO ================= -->
+
+    <div class="importante">
+        <strong>⚠️ Error común:</strong> poner más de un <code>&lt;main&gt;</code>
+        por página, o usar <code>&lt;section&gt;</code> como si fuera un
+        <code>&lt;div&gt;</code> para acomodar cosas. Regla práctica: si el bloque
+        no tiene un título propio y un tema claro, probablemente no sea un
+        <code>section</code> — quizás sea un simple <code>div</code>.
+    </div>
+
+    <div class="tip">
+        <strong>✅ Practicá:</strong> comentá (con <code>&lt;!-- --&gt;</code>) el
+        <code>&lt;aside&gt;</code> y recargá. Vas a ver que la página se sigue
+        entendiendo: esa es la "prueba" de que el contenido de un aside es
+        secundario.
+    </div>
+
+    <p class="migas"><a href="aria.html">Siguiente: 2 · Accesibilidad (ARIA) →</a></p>
+
+</body>
+</html>
