@@ -1,0 +1,44 @@
+article{
+    border-bottom: 2px solid orange;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.box{
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    background-color: lightblue;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.gris{
+    background-color: gray;
+}
+
+.relative{
+    position: relative;
+    top: 30px;
+    left: 150px;
+}
+
+.box-parent{
+    position: relative;
+    width: 400px;
+    height: 200px;
+    background-color: bisque;
+    border: gray 3px dashed;
+    padding: 12px;
+}
+
+.badge{
+    position: relative;
+    width: 400px;
+    height: 200px;
+    background-color: bisque;
+    border: gray 3px dashed;
+    padding: 12px;
+}

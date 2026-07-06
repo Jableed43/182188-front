@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<h1> Posicionamiento </h1>
+
+<article>
+    <h2> Static (por defecto) </h2>
+    <p> Flujo normal. No responde a top, left, right, bottom.  </p>
+    <div class="box" >Caja 1</div>
+    <div class="box gris" >Caja 2</div>
+</article>
+
+<article>
+    <h2> Relative </h2>
+    <p> La caja 2 se mueve respecto a su posicion original, pero su hueco se sigue reservando  </p>
+    <div class="box" >Caja 1</div>
+    <div class="box gris relative" >Caja 2</div>
+    <div class="box" >Caja 3</div>
+</article>
+
+<article>
+    <h2> Absolute </h2>
+    <p> El padre tiene position relative y el hijo position absolute. El hijo se ubica en la esquina del padre. Este es el patron mas usado (badges)  </p>
+    <div class="box-parent">
+        <span class="badge" >Nuevo</span>
+    </div >
+</article>
+
+</body>
+</html>
