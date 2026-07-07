@@ -26,19 +26,61 @@ article{
 }
 
 .box-parent{
-    position: relative;
+    position: relative;     /* <-- ancla para el hijo absolute */
     width: 400px;
     height: 200px;
-    background-color: bisque;
-    border: gray 3px dashed;
+    background-color: #f8f9f9;
+    border: 3px dashed #bdc3c7;
     padding: 12px;
 }
 
 .badge{
-    position: relative;
-    width: 400px;
-    height: 200px;
-    background-color: bisque;
-    border: gray 3px dashed;
-    padding: 12px;
+    position: absolute;     /* se ubica respecto al .box-parent */
+    top: 10px;
+    right: 10px;
+    background-color: #f1c40f;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.fixed-btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    text-decoration: none;
+    font-size: 50px;
+    background-color: green;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 14px 10px rgba(0, 0, 0, 0.3);
+}
+
+.spacer{
+    height: 300px;
+    border: 1px solid gainsboro;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.sticky-header{
+    position: sticky;
+    top: 0;
+    background-color: #581958;
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.scroll-area{
+    background-color: rgb(180, 142, 180);
+    padding: 20px;
+    border-radius: 8px;
 }

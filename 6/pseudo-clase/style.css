@@ -1,0 +1,86 @@
+.tarjeta{
+    background-color: antiquewhite;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    /* transition maneja los efectos, su duracion, y el tipo de efecto */
+    transition: all 2s ease;
+    /* cursor: pointer al pasar el mouse se ve la manito */
+    cursor: pointer;
+    width: 90%;
+}
+
+/* Todo lo que escribas en esta regla .css va a surgir efecto cuando pases el mouse sobre el elemento */
+.tarjeta:hover{
+    background-color: violet;
+    color: white;
+    /* Este efecto transform agranda el elemento un 3% */
+    transform: scale(1.03);
+    border: solid red 3px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.btn {
+    margin-top: 15px;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2ecc71;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #27ae60;   /* más oscuro al pasar el mouse */
+}
+
+/* Cuando presionas y mantenes un boton surge el efecto del :active */
+.btn:active {
+  transform: scale(0.90);
+}
+
+
+input{
+    padding: 10px;
+    font-size: 15px;
+    border: black solid 2px;
+    transition: border-color 0.3s ease;
+    /* Por defecto al hacer click en un input, este tiene una linea gruesa de borde que no dejaria ver el cambio de color */
+    outline: none;
+}
+
+input:focus{
+    /* Permite modificar el color de un borde */
+    border-color: green;
+}
+
+.titulo-2::before{
+    content: "🔥 "
+}
+
+.titulo-2::after{
+    content: "💥 "
+}
+
+/* Sin importar el texto que tenga siempre la primera letra se va a comportar distinta */
+.lorem::first-letter{
+    font-size: 3rem;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Sin importar el texto que tenga siempre la primera linea se va a comportar distinta */
+.lorem::first-line{
+    text-transform: uppercase;
+    color: red;
+}
+
+/* El texto seleccionado se comporta de la forma que define la regla */
+.lorem::selection {
+  background-color: #ffde59;
+  color: #000;
+}

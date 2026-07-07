@@ -1,0 +1,56 @@
+article{
+    border-bottom: 2px solid orange;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.stack{
+    position: relative;
+    height: 180px;
+}
+
+.capa{
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.capa-1{
+    top: 0;
+    left: 0;
+    background-color: blue;
+    z-index: 1;
+}
+
+.capa-2{
+    top: 25px;
+    left: 50px;
+    background-color: red;
+    z-index: 3;
+}
+
+.capa-3{
+    top: 50px;
+    left: 100px;
+    background-color: green;
+    z-index: 2;
+}
+
+.fixed-btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    text-decoration: none;
+    font-size: 50px;
+    background-color: green;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 14px 10px rgba(0, 0, 0, 0.3);
+}
