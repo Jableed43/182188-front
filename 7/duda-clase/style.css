@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 30px;
+}
+
+h1 {
+    margin-bottom: 8px;
+}
+
+body>p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   1. El padre de las dos cajas hermanas: contenedor flex.
+   Sin esto, .caja-texto y .caja-imagen no tienen forma
+   de "coordinarse" entre sí para medir lo mismo.
+========================================================= */
+.contenedor {
+    display: flex;
+    gap: 20px;
+}
+
+/* =========================================================
+   2. Estilos comunes a ambas cajas (solo visuales, no
+   afectan el tamaño entre sí).
+========================================================= */
+.caja {
+    border: 2px solid #333;
+    border-radius: 6px;
+    padding: 16px;
+
+    /* La clave: las dos cajas usan el MISMO valor de flex.
+       flex: 1 = flex-grow: 1, flex-shrink: 1, flex-basis: 0%.
+       Esto le dice al navegador: "no midas el contenido de
+       adentro, repartite el ancho disponible en partes
+       iguales con tu hermana". */
+    flex: 1;
+}
+
+.caja-texto {
+    background-color: #fff8e1;
+}
+
+.caja-imagen {
+    background-color: #e8f4ff;
+}
+
+/* =========================================================
+   3. La imagen debe ocupar el 100% del ancho de SU caja
+   (que ya es igual a la otra) para no desbordar ni quedar
+   con su tamaño original.
+========================================================= */
+.caja-imagen img {
+    width: 100%;
+    height: auto;
+    display: block;
+}

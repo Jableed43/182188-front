@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duda de clase: cajas hermanas del mismo tamaño</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Dos cajas hermanas, mismo tamaño (texto vs imagen)</h1>
+    <p>Mirá <code>explicacion.md</code> para el detalle. Acá el código mínimo y comentado.</p>
+
+    <!-- .contenedor es el padre flex: acá se resuelve todo -->
+    <div class="contenedor">
+
+        <!-- Caja 1: solo tiene texto -->
+        <div class="caja caja-texto">
+            <p>
+                Esta caja tiene texto. Puede ser corto o puede ser un párrafo bastante
+                largo, no importa: gracias a flex: 1 en ambas cajas, el ancho de esta
+                caja no depende de cuánto texto tenga adentro.
+            </p>
+        </div>
+
+        <!-- Caja 2: solo tiene una imagen -->
+        <div class="caja caja-imagen">
+            <img
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><rect width='100%25' height='100%25' fill='%23888'/><text x='50%25' y='50%25' fill='white' font-size='22' text-anchor='middle' dy='.3em'>Imagen 300x200</text></svg>"
+                alt="Imagen de ejemplo">
+        </div>
+
+    </div>
+
+</body>
+
+</html>
