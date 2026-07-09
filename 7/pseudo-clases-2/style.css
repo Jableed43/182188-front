@@ -1,0 +1,52 @@
+section{
+    border-bottom: 2px solid gray;
+    padding: 20px 0;
+}
+
+.lista{
+    list-style: none;
+    padding: 0;
+}
+
+.lista li{
+    padding: 10px 15px;
+    border: 1px solid rgb(158, 154, 154);
+}
+
+.lista li:first-child{
+    background-color: rgb(103, 103, 191);
+    color: white;
+    font-weight: bold;
+}
+
+.lista li:last-child{
+    background-color: rgb(205, 95, 91);
+    color: white;
+    font-weight: bold;
+}
+
+.lista li:nth-child(even){
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: red;
+}
+
+.lista li:nth-child(odd){
+    border: 2px solid green;
+    font-style: italic;
+}
+
+/* Casi no se usa */
+.lista li:nth-of-type(2){
+    color: violet;
+}
+
+/* Trabajar con cada tercero */
+.lista-2 li:nth-child(3n){
+    color: red;
+}
+
+/* Trabajar desde el 7mo en adelante */
+.lista-2 li:nth-child(n+7){
+    font-style: italic;
+    text-decoration: line-through;
+}

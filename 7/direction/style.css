@@ -1,0 +1,19 @@
+.flex-item{
+    background-color: green;
+    color: white;
+    border: solid black;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 32px;
+}
+
+.flex-container-row{
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-container-column{
+    display: flex;
+    flex-direction: column;
+}
