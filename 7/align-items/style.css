@@ -21,23 +21,3 @@
     text-align: center;
     font-size: 32px;
 }
-
-.ai-start{
-    align-items: start;
-}
-
-.ai-end{
-    align-items: end;
-}
-
-.ai-stretch {
-    align-items: stretch;
-}
-
-.ai-stretch div {
-    height: 90px;
-}
-
-.ai-center{
-    align-items: center;
-}
