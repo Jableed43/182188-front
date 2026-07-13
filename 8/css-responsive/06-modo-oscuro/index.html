@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05 - Modo Oscuro (prefers-color-scheme)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Media Queries del Sistema Operativo</h1>
+    <p>Este sitio lee la preferencia de tema de tu Windows/celular. Probá cambiarla en la configuración del sistema.</p>
+  </header>
+
+  <main>
+    <section class="tarjeta">
+      <h2>¿Cómo funciona?</h2>
+      <p>
+        La media query <code>prefers-color-scheme</code> no depende del ancho de pantalla,
+        sino de una preferencia que vive en el sistema operativo del usuario.
+      </p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Modo actual</h2>
+      <p class="indicador-modo">
+        <span class="solo-claro">☀️ Estás en modo claro</span>
+        <span class="solo-oscuro">🌙 Estás en modo oscuro</span>
+      </p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>¿Dónde lo cambio?</h2>
+      <p>Windows: Configuración → Personalización → Colores → Elegir modo.</p>
+      <p>Chrome DevTools: Ctrl+Shift+P → escribí "rendering" → "Emulate CSS prefers-color-scheme".</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tema 2 · Media Queries del Sistema Operativo: ¡Modo Oscuro!</p>
+  </footer>
+
+</body>
+</html>

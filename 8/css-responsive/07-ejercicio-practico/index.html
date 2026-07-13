@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07 - Ejercicio de Clase: Grilla de Productos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1>📝 Ejercicio de Clase</h1>
+    <p>Grilla de productos Mobile-First: 1 columna en celular, 2 en tablet (≥768px), 3 en desktop (≥1024px).</p>
+  </header>
+
+  <section class="tarjeta-consigna">
+    <h2>Consigna</h2>
+    <ol>
+      <li>Creá una grilla de productos con la clase <code>.grid-container</code> que contenga 3 tarjetas <code>.card</code>.</li>
+      <li>Escribí el CSS base con enfoque Mobile-First: las tarjetas deben ocupar el 100% del ancho de la pantalla y el espaciado debe ser angosto (probá con <code>margin-bottom</code> en cada tarjeta).</li>
+      <li>
+        Agregá una Media Query con <code>@media (min-width: 768px)</code> para que en tablets las tarjetas se acomoden en dos columnas:
+        <ul>
+          <li>En <code>.grid-container</code>, sumá <code>flex-wrap: wrap</code> para que las tarjetas puedan pasar a la fila siguiente en vez de aplastarse todas juntas.</li>
+          <li>En <code>.card</code>, poné <code>width: 48%</code>.</li>
+          <li>En <code>.grid-container</code>, sumá también <code>justify-content: space-between</code> para que el espacio libre se reparta solo entre las tarjetas.</li>
+        </ul>
+      </li>
+      <li>Agregá otra Media Query con <code>@media (min-width: 1024px)</code> para que en pantallas de escritorio las tarjetas se organicen en tres columnas (<code>width: 30%</code> en <code>.card</code>).</li>
+      <li>Asegurate de que todas las imágenes dentro de las tarjetas tengan <code>max-width: 100%</code> para que nunca se desborden de su contenedor.</li>
+    </ol>
+    <p class="nota">Pista: <code>flex-wrap</code> y <code>justify-content</code> no salieron en los ejemplos anteriores de Flexbox — son las dos propiedades nuevas que necesitás para este ejercicio.</p>
+  </section>
+
+  <main class="grid-container">
+    <article class="card">
+      <img src="https://picsum.photos/id/1080/500/350" alt="Producto 1 - mochila">
+      <h2>Mochila Urbana</h2>
+      <p>Resistente al agua, ideal para notebook de 15".</p>
+      <span class="precio">$25.000</span>
+    </article>
+
+    <article class="card">
+      <img src="https://picsum.photos/id/1060/500/350" alt="Producto 2 - auriculares">
+      <h2>Auriculares Inalámbricos</h2>
+      <p>Cancelación de ruido y 20hs de batería.</p>
+      <span class="precio">$18.500</span>
+    </article>
+
+    <article class="card">
+      <img src="https://picsum.photos/id/1074/500/350" alt="Producto 3 - reloj">
+      <h2>Reloj Inteligente</h2>
+      <p>Monitoreo de actividad y notificaciones.</p>
+      <span class="precio">$32.000</span>
+    </article>
+  </main>
+
+  <footer>
+    <p>Ejercicio de Clase · Unidad 08 · Responsive Design y Mobile-First</p>
+  </footer>
+
+</body>
+</html>

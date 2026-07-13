@@ -1,0 +1,125 @@
+/* ============================================
+   03 - SINTAXIS TRADICIONAL Y MODERNA
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #222;
+  background: #f4f4f4;
+}
+
+.hero {
+  background: #2b2d42;
+  color: white;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tarjeta {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta h2 {
+  margin-bottom: 0.75rem;
+  color: #2b2d42;
+}
+
+.tarjeta p {
+  margin-bottom: 0.75rem;
+}
+
+code {
+  background: #eee;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+pre {
+  background: #2b2d42;
+  color: #06d6a0;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+.caja-tradicional,
+.caja-moderna {
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  background: #ef476f;
+  color: white;
+}
+
+/* ---- Sintaxis tradicional: min-width ---- */
+@media screen and (min-width: 768px) {
+  .caja-tradicional {
+    background: #06d6a0;
+  }
+}
+
+/* ---- Sintaxis moderna: operador de comparación ---- */
+@media (width >= 768px) {
+  .caja-moderna {
+    background: #06d6a0;
+  }
+}
+
+/* ---- Rango específico: entre 768px y 1200px ---- */
+.contenedor-rango {
+  padding: 0.75rem;
+  background: #8d99ae;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  transition: padding 0.2s;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .contenedor-rango {
+    padding: 2rem;
+    background: #ffd166;
+    color: #222;
+  }
+}
+
+.aviso {
+  border-left: 4px solid #ef476f;
+  background: #fff4f6;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}

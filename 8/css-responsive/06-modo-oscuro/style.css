@@ -1,0 +1,102 @@
+/* ============================================
+   05 - MODO OSCURO (prefers-color-scheme)
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  transition: background-color 0.3s, color 0.3s;
+  /* Colores por defecto: modo claro */
+  background-color: #f4f4f4;
+  color: #222;
+}
+
+.hero {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background: #2b2d42;
+  color: white;
+}
+
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tarjeta {
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tarjeta h2 {
+  margin-bottom: 0.5rem;
+  color: #2b2d42;
+}
+
+code {
+  background: #eee;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.solo-claro,
+.solo-oscuro {
+  display: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.solo-claro {
+  display: inline-block;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* ---- Si el sistema del usuario pide modo oscuro ---- */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  .tarjeta {
+    background: #1e1e1e;
+    color: #e0e0e0;
+  }
+
+  .tarjeta h2 {
+    color: #06d6a0;
+  }
+
+  code {
+    background: #333;
+    color: #e0e0e0;
+  }
+
+  .solo-claro {
+    display: none;
+  }
+
+  .solo-oscuro {
+    display: inline-block;
+  }
+}

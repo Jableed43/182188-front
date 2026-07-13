@@ -1,0 +1,173 @@
+/* ============================================
+   07 - EJERCICIO DE CLASE: GRILLA DE PRODUCTOS
+   Enunciado:
+   1. .grid-container con 3 tarjetas .card
+   2. Mobile-First: 1 sola columna, espaciado angosto
+   3. @media (min-width: 768px): 2 columnas
+      - flex-wrap: wrap en .grid-container (para que las tarjetas
+        puedan pasar a la fila siguiente)
+      - width: 48% en .card
+      - justify-content: space-between en .grid-container (reparte
+        el espacio libre entre tarjetas)
+   4. @media (min-width: 1024px): 3 columnas (width: 30%)
+   5. Imágenes con max-width: 100%
+
+   Nota: flex-wrap y justify-content son las dos propiedades "nuevas"
+   de este ejercicio, ninguna había aparecido antes en los ejemplos
+   de Flexbox de la clase. Por eso se explicitan en la consigna del
+   HTML en vez de darlas por sabidas.
+
+   - margin-bottom en .card separa las filas cuando el flex hace wrap,
+     sin depender de la propiedad "gap" (más fácil de entender).
+   - Si sobra una tarjeta suelta en la última fila (como acá, con 3
+     tarjetas en una grilla de 2), simplemente queda a la izquierda:
+     es un comportamiento normal y muy común en grillas reales.
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #222;
+  background: #f4f4f4;
+}
+
+.hero {
+  background: #2b2d42;
+  color: white;
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.hero .nota {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.hero code {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.tarjeta-consigna {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  max-width: 1100px;
+  margin: 1.5rem auto;
+}
+
+.tarjeta-consigna h2 {
+  color: #2b2d42;
+  margin-bottom: 0.75rem;
+}
+
+.tarjeta-consigna ol {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tarjeta-consigna ul {
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tarjeta-consigna code {
+  background: #eee;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.tarjeta-consigna .nota {
+  margin-top: 1rem;
+  background: #fff4d6;
+  border-left: 4px solid #ffd166;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #222;
+}
+
+/* 1 y 2. ESTILOS BASE (Móvil): 1 columna, espaciado angosto */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 100%;
+  margin-bottom: 1rem;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding-bottom: 1rem;
+}
+
+/* 5. Regla de oro para imágenes responsivas */
+.card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  color: #2b2d42;
+  margin: 0.75rem 1rem 0.25rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0 1rem 0.5rem;
+}
+
+.precio {
+  display: block;
+  margin: 0 1rem;
+  font-weight: bold;
+  color: #06d6a0;
+  font-size: 1.1rem;
+}
+
+/* 3. TABLET (768px o más): 2 columnas al 48% */
+@media (min-width: 768px) {
+  .grid-container {
+    justify-content: space-between;
+  }
+  .card {
+    width: 48%;
+  }
+}
+
+/* 4. DESKTOP (1024px o más): 3 columnas al 30% */
+@media (min-width: 1024px) {
+  .card {
+    width: 30%;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}

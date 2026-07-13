@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04 - Imágenes Responsivas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Imágenes Responsivas Inteligentes</h1>
+    <p>Las imágenes de abajo nunca se salen de su contenedor ni se deforman.</p>
+  </header>
+
+  <main>
+    <section class="tarjeta">
+      <h2>Sin la regla de rescate ❌</h2>
+      <p>Esta imagen NO tiene <code>max-width: 100%</code>. Achicá la ventana y va a desbordar.</p>
+      <div class="scroll-horizontal">
+        <img class="img-rota" src="https://picsum.photos/id/1015/1200/800" alt="Paisaje de montaña sin optimizar">
+      </div>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Con la regla de rescate ✅</h2>
+      <pre><code>img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}</code></pre>
+      <img class="img-responsiva" src="https://picsum.photos/id/1015/1200/800" alt="Paisaje de montaña optimizado">
+    </section>
+
+    <section class="tarjeta">
+      <h2>Galería con object-fit: cover</h2>
+      <p>Todas las cajas miden 200x200 sin importar la proporción original de la foto.</p>
+      <div class="galeria">
+        <img src="https://picsum.photos/id/1015/600/400" alt="Foto 1">
+        <img src="https://picsum.photos/id/1025/400/600" alt="Foto 2">
+        <img src="https://picsum.photos/id/1035/800/300" alt="Foto 3">
+        <img src="https://picsum.photos/id/1043/300/800" alt="Foto 4">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tema 2 · Imágenes Responsivas Inteligentes</p>
+  </footer>
+
+</body>
+</html>

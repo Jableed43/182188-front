@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- La Llave Maestra: sin esto, el celular finge ser una PC y muestra todo diminuto -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01 - Viewport y Orientación</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Meta Viewport & Orientación</h1>
+    <p>Achica la ventana o gira el celular (Ctrl + Shift + M en Chrome) para ver los cambios.</p>
+  </header>
+
+  <main>
+    <section class="tarjeta">
+      <h2>¿Qué hace el viewport?</h2>
+      <p>
+        <code>width=device-width</code> le dice al navegador que use el ancho real del dispositivo,
+        no un ancho falso de escritorio. <code>initial-scale=1.0</code> evita el zoom automático.
+      </p>
+      <p>Prueba: comentá la etiqueta <code>&lt;meta name="viewport"&gt;</code> en el HTML y recargá. Vas a ver todo minúsculo.</p>
+    </section>
+
+    <section class="tarjeta caja-orientacion">
+      <h2>Detector de Orientación</h2>
+      <p>Esta caja cambia de color según cómo esté "parada" o "acostada" la pantalla:</p>
+      <div class="indicador">
+        <span class="etiqueta-portrait">📱 Portrait (vertical)</span>
+        <span class="etiqueta-landscape">💻 Landscape (horizontal)</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tema 1 · Mobile First: Filosofía de diseño y breakpoints</p>
+  </footer>
+
+</body>
+</html>

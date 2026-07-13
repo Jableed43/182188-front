@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02 - Mobile First y Breakpoints</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Mobile First: la Maleta de Viaje</h1>
+    <p>Achica y agranda la ventana lentamente. Mirá el ancho actual arriba a la derecha.</p>
+  </header>
+
+  <div class="ancho-actual" id="ancho-actual"></div>
+
+  <main class="contenedor">
+    <article class="tarjeta">
+      <h2>Celular</h2>
+      <p>Estilos base. Una sola columna, letra chica. Esto es lo que ve TODO el mundo por defecto.</p>
+    </article>
+    <article class="tarjeta">
+      <h2>Tablet (≥768px)</h2>
+      <p>A partir de 768px, el contenedor pasa de columna a fila.</p>
+    </article>
+    <article class="tarjeta">
+      <h2>Laptop (≥1024px)</h2>
+      <p>A partir de 1024px, agrandamos la tipografía porque hay más distancia al ojo.</p>
+    </article>
+  </main>
+
+  <section class="tarjeta-info">
+    <h2>Breakpoints Estándar de la Industria 📏</h2>
+    <p>No te bases en modelos de celular puntuales. Usá estos rangos genéricos consolidados en la industria:</p>
+    <table class="tabla-breakpoints">
+      <thead>
+        <tr><th>Ancho</th><th>Dispositivo típico</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>576px</td><td>Smartphones en horizontal</td></tr>
+        <tr><td>768px</td><td>Tablets de tamaño estándar</td></tr>
+        <tr><td>992px</td><td>Laptops y escritorios medianos</td></tr>
+        <tr><td>1200px</td><td>Monitores grandes de alta resolución</td></tr>
+      </tbody>
+    </table>
+    <p class="tip">💡 Tip: dejá que el contenido dicte el corte real. Si a los 810px un texto se amontona, ese es tu breakpoint para ese componente, más allá de la tabla.</p>
+  </section>
+
+  <footer>
+    <p>Tema 2 · Media Queries: el "Si... entonces..." de CSS</p>
+  </footer>
+
+  <script>
+    // Solo para que quede claro el breakpoint activo mientras se prueba
+    const el = document.getElementById('ancho-actual');
+    function actualizar() { el.textContent = 'Ancho actual: ' + window.innerWidth + 'px'; }
+    window.addEventListener('resize', actualizar);
+    actualizar();
+  </script>
+
+</body>
+</html>

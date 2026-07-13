@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 - Unidades Fluidas y clamp()</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1 class="titulo-fluido">Unidades Fluidas</h1>
+    <p>Este título usa <code>clamp()</code>. Cambiá el ancho de la ventana y mirá cómo crece sin límites raros.</p>
+  </header>
+
+  <main>
+    <section class="tarjeta">
+      <h2>width: 90%</h2>
+      <div class="caja-porcentaje">90% del ancho del padre</div>
+    </section>
+
+    <section class="tarjeta">
+      <h2>width: 50vw</h2>
+      <div class="caja-vw">50% del ancho del Viewport</div>
+    </section>
+
+    <section class="tarjeta">
+      <h2>height: 30vh</h2>
+      <div class="caja-vh">30% del alto del Viewport</div>
+    </section>
+
+    <section class="tarjeta">
+      <h2>clamp() — Tipografía a prueba de balas</h2>
+      <p>Piso 1.5rem · Ideal 5vw · Techo 3rem</p>
+      <p class="texto-clamp">Nunca bajo de tamaño legible, ni me vuelvo gigante en un TV.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tema 2 · Unidades Fluidas: dejando atrás los píxeles fijos</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 - Sintaxis Tradicional y Moderna</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Dos formas de escribir la misma regla</h1>
+    <p>Achicá y agrandá la ventana. Las dos tarjetas cambian igual, solo cambia cómo se escribió el CSS.</p>
+  </header>
+
+  <main>
+    <section class="tarjeta">
+      <h2>Sintaxis Tradicional</h2>
+      <pre><code>@media screen and (min-width: 768px) { ... }
+@media screen and (max-width: 767px) { ... }
+
+/* Rango con dos condiciones unidas por "and" */
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .contenedor { padding: 20px; }
+}</code></pre>
+      <div class="caja-tradicional">
+        Cambio con <code>min-width</code>
+      </div>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Sintaxis Moderna (operadores)</h2>
+      <pre><code>@media (width >= 768px) { ... }   /* = min-width: 768px */
+@media (width &lt;= 767px) { ... }  /* = max-width: 767px */
+
+/* Rango en una sola línea */
+@media (768px &lt;= width &lt;= 1200px) {
+  .contenedor { padding: 20px; }
+}</code></pre>
+      <div class="caja-moderna">
+        Cambio con <code>width &gt;=</code>
+      </div>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Rango específico: entre 768px y 1200px</h2>
+      <p>Este contenedor solo tiene relleno extra cuando el ancho está EXACTAMENTE entre 768px y 1200px. Fuera de ese rango, vuelve a su padding normal.</p>
+      <div class="contenedor-rango">Rango 768px – 1200px</div>
+    </section>
+
+    <section class="tarjeta aviso">
+      <h2>⚠️ Compatibilidad</h2>
+      <p>La sintaxis moderna (<code>width &gt;=</code>) es más legible pero requiere navegadores actualizados
+      (Chrome/Edge 104+, Firefox 63+, Safari 16.4+). Para proyectos que deben soportar navegadores viejos,
+      usá la sintaxis tradicional con <code>min-width</code> / <code>max-width</code>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tema 2 · Media Queries: Sintaxis Tradicional vs Moderna</p>
+  </footer>
+
+</body>
+</html>
