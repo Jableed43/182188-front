@@ -1,0 +1,79 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: sans-serif;
+    padding: 2rem;
+}
+
+.caja{
+    width: 150px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    background-color: lightskyblue;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.boton-magico{
+  background-color: brown;  
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  /* Esto es buena practica, porque establece el valor inicial a 0 */
+  transform: translateY(0);
+  margin-bottom: 2rem;
+  /* Este ejemplo sirve para aprender como especificar cada transicion */
+  /* transition: background-color 2s ease, transform 3s ease; */
+  transition: all 3s ease;
+}
+
+/* Que es ease? -> transition-timing-function - Define la curva de velocidad */
+/* En el caso de ease empieza lento, es rapido en el medio y termina lento */
+
+.boton-magico:hover{
+    background-color: rgb(42, 165, 58);
+    transform: scale(1.2);
+    
+}
+
+/* Ease-in Empieza lento y acelera al final */
+.width-height{
+    transition: all 1s ease-in;
+}
+
+.width-height:hover{
+    width: 270px;
+    height: 220px;
+    /*  Escalar a la inversa el font-size */
+    font-size: 0.5rem;
+}
+
+/* Transition: property, duration, timing-function, delay */ 
+
+/* delay es el tiempo de espera antes de que comience la transicion */
+.delay{
+    transition: background-color 0.4s ease 5s;
+}
+
+.delay:hover, .ease-out:hover, .ease-in-out:hover{
+    background-color: tomato;
+}
+/* Empieza rápido y desacelera al final. */
+.ease-out{
+    transition: background-color 0.4s ease-out;
+}
+
+/* Empieza lento, acelera y vuelve a desacelerar al final. */
+.ease-in-out{
+    transition: background-color 0.4s ease-in-out;
+}
