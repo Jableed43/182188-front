@@ -1,0 +1,196 @@
+/* ==========================================================================
+   1. VARIABLES Y RESET
+   Centralizamos colores y tipografías acá para no repetir valores sueltos
+   (magic numbers) por todo el sitio.
+   ========================================================================== */
+:root {
+  --color-primary: #6f4e37;   /* marrón café, para acentos y botones */
+  --color-dark: #2c1810;      /* header/footer */
+  --color-accent: #d4a574;    /* crema/latte, para hovers y detalles */
+  --color-bg: #faf6f1;
+  --color-text: #3a2e28;
+  --color-white: #ffffff;
+
+  --font-heading: 'Fraunces', serif;
+  --font-body: 'Poppins', sans-serif;
+
+  --max-width: 1100px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* el padding y el border ya no rompen el ancho declarado */
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  /* Flexbox en columna a nivel body: el footer siempre queda al final,
+     incluso en páginas con poco contenido. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
+
+img {
+  max-width: 100%; /* ninguna imagen puede romper el layout ni provocar scroll horizontal */
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Botones reutilizables en todo el sitio */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 30px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-dark);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin: 2.5rem 0;
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   2. HEADER Y NAV
+   Flexbox con justify-content: space-between para separar logo y links
+   a los extremos del header.
+   ========================================================================== */
+header {
+  background-color: var(--color-dark);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.logo i {
+  color: var(--color-accent);
+  margin-right: 0.4rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.nav-links a {
+  color: var(--color-white);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   3. FOOTER
+   ========================================================================== */
+footer {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  text-align: center;
+  padding: 2.5rem 1rem;
+  margin-top: auto; /* junto con el flex del body, empuja el footer abajo */
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.footer-nav a:hover {
+  color: var(--color-accent);
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.footer-social a:hover {
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   4. RESPONSIVE GENERAL
+   Lo que afecta a header/footer, presentes en todas las páginas.
+   Los ajustes de cada sección viven en su propio archivo (css/pages/*.css).
+   ========================================================================== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+}

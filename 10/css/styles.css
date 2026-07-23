@@ -1,0 +1,7 @@
+/* 
+Punto de entrada unico
+Vamos a tener acá todos los css linkeados a este archivo
+todos los html pueden leer los mismos estilos y a su vez tienen los suyos propios
+*/
+@import url("general.css");
+@import url("pages/hero.css");

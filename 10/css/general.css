@@ -1,0 +1,179 @@
+/* reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables 
+Podes guardar:
+- Colores
+- Tamaños
+- Fuentes
+*/
+
+:root{
+    --color-primary: #6f4e37;   /* marrón café, para acentos y botones */
+    --color-dark: #2c1810;      /* header/footer */
+    --color-accent: #d4a574;    /* crema/latte, para hovers y detalles */
+    --color-bg: #faf6f1;
+    --color-text: #3a2e28;
+    --color-white: #ffffff;
+    --max-width: 1100px;
+
+    --font-heading: "Fraunces", serif;
+    --font-body: "Poppins", sans-serif;
+}
+
+body{
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh; /* Esto evita que el footer se suba */
+    display: flex; /* Esto evita que el footer se suba */
+    flex-direction: column;
+    font-family: var(--font-body);
+}
+
+h1,h2,h3{
+    font-family: var(--font-heading);
+}
+
+img{
+    max-width: 100%; /* Ninguna imagen pueda romper el layout ni provocar scroll horizontal */
+    display: block;
+}
+
+a{
+    text-decoration: none;
+    /* Inherit significa heredado... hereda del body */
+    color: inherit;
+}
+
+ul{
+    list-style: none;
+}
+
+/* Botón reutilizable */
+.btn{
+    font-family: var(--font-body);
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-primary{
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn-primary:hover{
+    background-color: var(--color-dark);
+    transform: translateY(-2px);
+    transform: scale(1.05);
+}
+
+.btn-secondary{
+    color: var(--color-primary);
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+
+/* Header y Nav */
+
+header{
+    background-color: var(--color-dark);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.logo{
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-white);
+}
+
+.logo i{
+    color: var(--color-accent);
+    margin-right: 0.4rem;
+}
+
+.nav-links{
+    display: flex;
+    gap: 1.8rem;
+}
+
+.nav-links li a{
+    color: var(--color-white);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover, .footer-nav a:hover, .footer-social a:hover{
+    color: var(--color-accent);
+}
+
+/* Footer */
+
+footer{
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: auto; /* Junto con el flex del body empuja el footer hacia abajo */
+}
+
+.footer-nav{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-nav a, .footer-social a{
+    transition: color 0.2s;
+}
+
+.footer-social{
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+
+@media (max-width: 768px){
+    .navbar{
+        flex-direction: column;
+        text-align: center;
+    }
+}

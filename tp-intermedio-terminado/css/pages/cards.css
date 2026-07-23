@@ -1,0 +1,51 @@
+/* ==========================================================================
+   CARDS (productos.html)
+   flex-wrap para que las cards pasen a la fila de abajo solas cuando
+   no entran más en el ancho disponible.
+   ========================================================================== */
+.cards-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 2rem 3rem;
+}
+
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  flex: 1 1 280px; /* crece/encoge pero nunca baja de 280px: ahí hace wrap */
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.card-body h3 {
+  color: var(--color-primary);
+}
+
+.card-body p {
+  flex: 1; /* empuja el botón al fondo aunque los textos tengan distinto largo */
+  font-size: 0.95rem;
+}

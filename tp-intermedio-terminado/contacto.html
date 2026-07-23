@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café Aroma - Contacto</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <a href="./index.html" class="logo"><i class="fa-solid fa-mug-hot"></i>Café Aroma</a>
+      <ul class="nav-links">
+        <li><a href="./index.html">Inicio</a></li>
+        <li><a href="./productos.html">Nuestro Café</a></li>
+        <li><a href="./galeria.html">Galería</a></li>
+        <li><a href="./contacto.html" class="active">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">Contacto</h1>
+
+    <!-- Formulario semántico: label asociado a cada input mediante for/id -->
+    <section class="contact-section">
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="name">Nombre completo</label>
+          <input type="text" id="name" name="name" placeholder="Tu nombre" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="tunombre@ejemplo.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Teléfono</label>
+          <input type="tel" id="phone" name="phone" placeholder="+54 11 1234-5678" required />
+        </div>
+
+        <div class="form-group">
+          <label for="reason">Motivo de contacto</label>
+          <select id="reason" name="reason" required>
+            <option value="" disabled selected>Seleccioná una opción</option>
+            <option value="reserva">Reserva de mesa</option>
+            <option value="eventos">Pedidos para eventos</option>
+            <option value="trabajo">Trabajá con nosotros</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <fieldset>
+          <legend>¿Es tu primera vez en Café Aroma?</legend>
+          <div class="radio-group">
+            <div>
+              <input type="radio" id="first-yes" name="first-visit" value="si" required />
+              <label for="first-yes">Sí</label>
+            </div>
+            <div>
+              <input type="radio" id="first-no" name="first-visit" value="no" required />
+              <label for="first-no">No</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="comment">Mensaje</label>
+          <textarea id="comment" name="comment" placeholder="Contanos en qué te podemos ayudar..." required></textarea>
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+          <button type="reset" class="btn btn-secondary">Limpiar formulario</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <ul class="footer-nav">
+      <li><a href="./index.html">Inicio</a></li>
+      <li><a href="./productos.html">Nuestro Café</a></li>
+      <li><a href="./galeria.html">Galería</a></li>
+      <li><a href="./contacto.html">Contacto</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+    <p>&copy; 2026 Café Aroma. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

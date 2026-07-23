@@ -1,0 +1,28 @@
+/* ==========================================================================
+   GALERÍA (galeria.html)
+   Mosaico simple con Flexbox: las imágenes envuelven solas según el
+   ancho de pantalla, sin necesitar media queries adicionales.
+   ========================================================================== */
+.gallery-section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1rem 2rem 3rem;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.gallery-item {
+  flex: 1 1 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+}
