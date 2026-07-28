@@ -26,7 +26,67 @@
         </ul>
       </nav>
     </header>
+    <h1 class="page-title" >Contacto</h1>
+    <section class="main-section">
+      <form>
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input type="text" name="name" placeholder="Tu nombre" id="name" required>
+        </div>
 
+        <div class="form-group">
+          <label for="name">Apellido</label>
+          <input type="text" name="lastName" placeholder="Tu apellido" id="lastName" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Teléfono</label>
+          <input type="tel" name="phone" id="phone" placeholder="+54 11 1234-5678" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="youremail@mail.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="reason">Motivo de contacto</label>
+          <select name="reason" id="reason">
+            <!-- disabled selected hacen que no puedan mandar esa opcion como valida -->
+            <option value="" disabled selected >Selecciona una opción</option>
+            <option value="reserva">Reserva de mesa</option>
+            <option value="eventos">Pedidos para eventos</option>
+            <option value="trabajo">Trabajá con nosotros</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+
+        <fieldset>
+          <legend>¿Es tu primera vez en Café Aroma?</legend>
+          <div class="radio-group">
+            <div>
+              <input type="radio" id="first-yes" name="first-visit" value="si" required >
+              <label for="">si</label>
+            </div>
+            <div>
+              <input type="radio" id="first-no" name="first-visit" value="no" required>
+              <label for="">no</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <label for="comment">Mensaje</label>
+          <textarea name="comment" id="comment" placeholder="Contanos en qué te podemos ayudar" required cols="40" rows="5" maxlength="2000" minlength="1" ></textarea>
+        </div>
+
+        <div class="form-buttons">
+          <button class="btn btn-primary" type="submit" >Enviar mensaje</button>
+          <button class="btn btn-secondary" type="reset">Limpiar formulario</button>
+        </div>
+
+      </form>
+    </section>
     <footer>
         <ul class="footer-nav">
             <li><a href="./index.html">Inicio</a></li>

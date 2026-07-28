@@ -5,3 +5,6 @@ todos los html pueden leer los mismos estilos y a su vez tienen los suyos propio
 */
 @import url("general.css");
 @import url("pages/hero.css");
+@import url("pages/productos.css");
+@import url("pages/galeria.css");
+@import url("pages/contacto.css");

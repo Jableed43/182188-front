@@ -11,14 +11,19 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <script src="https://kit.fontawesome.com/ef88cf4afb.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="imge/x-icon" href="assets/img/coffee.png">
+    <script
+      src="https://kit.fontawesome.com/ef88cf4afb.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" type="imge/x-icon" href="assets/img/coffee.png" />
   </head>
   <body>
     <header>
       <nav class="navbar">
-        <a href="./index.html" class="logo" ><i class="fa-solid fa-mug-hot"></i>Café Aroma</a>
-        <ul class="nav-links" >
+        <a href="./index.html" class="logo"
+          ><i class="fa-solid fa-mug-hot"></i>Café Aroma</a
+        >
+        <ul class="nav-links">
           <li><a href="./index.html">Inicio</a></li>
           <li><a href="./productos.html">Nuesto Café</a></li>
           <li><a href="./galeria.html">Galería</a></li>
@@ -27,17 +32,76 @@
       </nav>
     </header>
 
-    <footer>
-        <ul class="footer-nav">
-            <li><a href="./index.html">Inicio</a></li>
-            <li><a href="./productos.html">Nuesto Café</a></li>
-            <li><a href="./galeria.html">Galería</a></li>
-            <li><a href="./contacto.html">Contacto</a></li>
-        </ul>
-        <div class="footer-social">
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    <main>
+      <h1 class="page-title">Nuestro Café</h1>
+
+      <section class="main-section">
+        <!-- Este section es la seccion principal -->
+        <div class="cards-grid">
+          <!-- Este div es quien va a poseer la grilla - flex container -->
+          <article class="card">
+            <!-- Este article va a ser una card -->
+            <img
+              src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&q=80&auto=format&fit=crop"
+              alt="Tres cafés se encuentran en un brindis"
+            />
+            <div class="card-body">
+              <h3>Café de especialidad</h3>
+              <p>
+                Granos de origen único, tostados semanalmente y separados en
+                v60, prensa francesa o espresso, a tu elección
+              </p>
+              <a href="./contacto.html" class="btn btn-secondary">Consultar</a>
+            </div>
+          </article>
+          <article class="card">
+            <!-- Este article va a ser una card -->
+            <img
+              src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&q=80&auto=format&fit=crop"
+              alt="Panes artesanales recien horneados"
+            />
+            <div class="card-body">
+              <h3>Panaderia artesanal</h3>
+              <p>
+                Horneamos todos los dias: crossaints, medialunas y tortas caseras para acompañar tu café.
+              </p>
+              <a href="./contacto.html" class="btn btn-secondary">Consultar</a>
+            </div>
+          </article>
+          <article class="card">
+            <!-- Este article va a ser una card -->
+            <img
+              src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=500&q=80&auto=format&fit=crop"
+              alt="Granos de café tostados"
+            />
+            <div class="card-body">
+              <h3>Venta de granos</h3>
+              <p>
+                Llevate nuestros granos a casa, molidos al momento según el método que uses.
+              </p>
+              <a href="./contacto.html" class="btn btn-secondary">Consultar</a>
+            </div>
+          </article>
+          
         </div>
+      </section>
+    </main>
+
+    <footer>
+      <ul class="footer-nav">
+        <li><a href="./index.html">Inicio</a></li>
+        <li><a href="./productos.html">Nuesto Café</a></li>
+        <li><a href="./galeria.html">Galería</a></li>
+        <li><a href="./contacto.html">Contacto</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a href="#" aria-label="Facebook"
+          ><i class="fa-brands fa-facebook"></i
+        ></a>
+      </div>
     </footer>
   </body>
 </html>

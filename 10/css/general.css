@@ -88,6 +88,19 @@ ul{
     color: var(--color-white);
 }
 
+.page-title{
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    color: var(--color-primary);
+}
+
+.main-section{
+    max-width: var(--max-width);
+    margin: 0 auto;
+    /* Margin auto acomoda los elementos al medio */
+    padding: 1rem 2rem 3rem;
+}
 
 /* Header y Nav */
 
