@@ -1,0 +1,21 @@
+.card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.card{
+    width: 18rem;
+}
+
+.card-body{
+    background-color: #f16060;
+}
+
+/* .btn-primary{
+    background-color: red;
+} */
