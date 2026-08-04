@@ -41,6 +41,7 @@ const fechaNacimiento = 1990;
 const nombres = ["Gustavo", "Andrea", "Luciano"]
 
 // push añade un elemento al final del array
+
 nombres.push("Javier")
 
 console.log(nombres)
