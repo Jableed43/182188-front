@@ -79,3 +79,7 @@ const sociosMorosos = socios.filter(socio => !socio.cuotaAlDia)
 // const sociosMorosos = socios.filter(socio => socio.cuotaAlDia === false)
 console.log({sociosMorosos})
 
+const thiago = socios.find(socio => socio.id === 9)
+const socioAlDia = socios.find(socio => socio.cuotaAlDia === true)
+console.log({thiago})
+console.log({socioAlDia});
