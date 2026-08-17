@@ -1,0 +1,74 @@
+body {
+  font-family: system-ui, Arial, sans-serif;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+  line-height: 1.6;
+  color: #222;
+}
+
+h1 {
+  border-bottom: 3px solid #0069c0;
+  padding-bottom: 8px;
+}
+
+h2 {
+  margin-top: 32px;
+  font-size: 1.1em;
+  color: #0069c0;
+}
+
+.instruccion {
+  background: #eef6ff;
+  border-left: 4px solid #0069c0;
+  padding: 12px 16px;
+}
+
+code, kbd {
+  background: #eee;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+}
+
+.titulo {
+  cursor: pointer;
+  user-select: none;
+}
+
+.texto {
+  transition: all 0.3s ease;
+}
+
+.botonera {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+button {
+  padding: 8px 14px;
+  font-size: 0.95em;
+  cursor: pointer;
+}
+
+/* Ojo con esto: el fondo de .caja viene de ACÁ, del archivo .css.
+   Por eso caja.style.backgroundColor devuelve "" (vacío) en el script. */
+.caja {
+  background: #fafafa;
+  border: 2px dashed #999;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+label {
+  display: inline-block;
+  margin-top: 12px;
+  margin-right: 6px;
+}
+
+#dinamico {
+  margin-top: 16px;
+  font-weight: bold;
+}

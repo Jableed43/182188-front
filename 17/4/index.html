@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sistema de registro y liquidacion</h1>
+    <p class="ayuda"> Al presionar iniciar compra, se abre un cuadro de dialogo para ingresar los productos uno por uno. Para finalizar la carga ingresá un punto: <code>.</code> </p>
+
+    <h2>Catalogo de la tienda</h2>
+    <table class="catalogo">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Producto</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody id="catalogo-body"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Productos en catalogo</td>
+                <td id="catalogo-cantidad">0</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button id="iniciar" class="btn-principal">Iniciar compra</button>
+    <button id="reiniciar" class="btn-secundario oculto">Nueva compra</button>
+
+    <section id="resultados" class="oculto">
+        <h2> Productos aceptados en la compra </h2>
+        <ul id="lista-aceptados" class="lista" ></ul>
+
+        <h2> Productos no encontrados en la tienda </h2>
+        <ul id="lista-no-encontrados" class="lista" ></ul>
+
+        <p id="total" class="total">Total a pagar: $0</p>
+    </section>
+
+    <script src="index.js"></script>
+</body>
+</html>
