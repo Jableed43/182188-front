@@ -1,29 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const parrafoEspecial = document.getElementById("parrafo-especial");
-
-  console.log(parrafoEspecial);
-  // parrafoEspecial.style.backgroundColor = "brown"
-  // parrafoEspecial.style.color = "yellow"
-
-  // HTML collection
-  const items = document.getElementsByClassName("item");
-
+  // lista es el ul
+  const lista = document.querySelector(".lista")
+  const btnAgregar = document.getElementById("btn-agregar")
+  
   // NodeList
+  // es la lista de los li
   const itemsList = document.querySelectorAll(".item");
+  let contador = itemsList.length
 
-  console.log(items);
+  console.log(itemsList);
 
-  // NodeList posee forEach
-  itemsList.forEach((item, index) => console.log(item, index));
+  btnAgregar.addEventListener("click", function() {
+     // sumo +1 contador 
+    contador++
 
-  // HTML collection - no funciona con forEach -> Lo pasas por un for o lo convertis en array
-  // ✅ Solución 1: convertirla en array
-  Array.from(items).forEach(function (item, i) {
-    console.log(`3b) Convertida con Array.from, item ${i}:`, item.textContent);
-  });
+  // crear el elemento
+    const li = document.createElement('li')
 
-  // ✅ Solución 2: recorrerla con un for clásico (funciona en las dos)
-  for (let i = 0; i < items.length; i++) {
-    console.log(`3c) Con for clásico, item ${i}:`, items[i].textContent);
-  }
+    // ponerle texto
+    li.textContent = `Item ${contador}`
+
+    // ponerle la clase
+    li.className = "item"
+
+    // añadirlo a la lista
+    lista.appendChild(li)
+  
+  })
+
 });

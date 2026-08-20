@@ -12,5 +12,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const subtitulo = document.querySelector("p")
     const productos = document.querySelector("#productos")
     const listItem = document.querySelectorAll(".list-item")
-    
+    console.log(titulo)
+    console.log(subtitulo)
+    console.log(productos)
+    console.log(listItem)
 })

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <ul class="lista-desordenada">
+      <li class="list-item">Soy un list item 1</li>
+      <li class="list-item verde" id="item-especial">Soy un list item 2</li>
+      <li class="list-item">Soy un list item 3</li>
+      <li class="list-item">Soy un list item 4</li>
+      <li class="list-item">Soy un list item 5</li>
+      <li class="list-item">Soy un list item 6</li>
+    </ul>
+
+    <p class="texto"></p>
+
+    <div class="contenedor-magico"></div>
+
+    <button onclick="crearElementoListaFinal()" >Añadir elemento al final de la lista</button>
+    <button onclick="crearElementoListaInicial()"> Añadir elemento al inicio de la lista </button>
+    <button onclick="agregarAtributoToggle()" >Modificar el item especial</button>
+    <button onclick="removerClaseVerde()"> Deja de ser verde </button>
+    <button onclick="quitarAtributo()">Quitar todos los atributos</button>
+    <script src="class.js"></script>
+</body>
+</html>
