@@ -41,11 +41,34 @@ function agregarAtributoToggle() {
 
 // - Remover una clase
 function removerClaseVerde() {
-    itemEspecial.classList.remove("")
+    itemEspecial.classList.remove("verde")
 }
 
 // - Quitar todas las clases (atributo)
 function quitarAtributo() {
     itemEspecial.removeAttribute("class")
     itemEspecial.removeAttribute("id")
+}
+
+// Eliminar ultimo elemento de la lista
+function eliminarUltimoElemento() {
+    // Dos posibles caminos, el mismo resultado
+    // lista.removeChild(listItem[listItem.length - 1])
+    lista.removeChild(lista.lastElementChild)
+}
+
+// Eliminar primer elemento de la lista
+function eliminarPrimerElemento() {
+    lista.removeChild(lista.firstElementChild)
+}
+
+// Crear un elemento e insertarlo
+function crearElementos() {
+    contenedorMagico.innerHTML = `
+    <ul>
+        <li> <h1> Soy un li magico 1 </h1> </li>
+        <li> <p class="verde" > Soy un li magico  </p> </li>
+        <li> <span> Soy un li magico 3 </span> </li>
+    </ul>
+    `
 }
