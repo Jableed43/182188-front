@@ -63,12 +63,12 @@ h1 {
   cursor: pointer;
 }
 
-#lista-tareas li.completada {
+#lista-tareas li.completada small {
   text-decoration: line-through;
   color: #999;
 }
 
-.tarea-eliminar {
+#lista-tareas li button.tarea-eliminar {
   border: none;
   background: transparent;
   color: #dc3545;
