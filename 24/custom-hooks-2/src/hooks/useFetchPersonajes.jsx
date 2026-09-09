@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
   //endpoint
-const URL_PERSONAJES = "http://localhost:3000/characters";
+const URL_PERSONAJES = "http://localhost:3001/characters";
 
 function useFetchPersonajes() {
   // Data es lo que la api me haya enviado
