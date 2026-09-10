@@ -2465,6 +2465,20 @@
       ],
       "url": "https://rickandmortyapi.com/api/character/100",
       "created": "2017-12-01T12:02:21.611Z"
+    },
+    {
+      "name": "Mario",
+      "species": "Humano",
+      "status": "Alive",
+      "image": "https://static.wikia.nocookie.net/heroess/images/9/9f/Mario_Clear_SSBB.png/revision/latest?cb=20180823143037&path-prefix=es",
+      "id": 101
+    },
+    {
+      "name": "Luigi Mario",
+      "species": "Human",
+      "status": "Alive",
+      "image": "https://upload.wikimedia.org/wikipedia/en/b/be/Luigi_by_Shigehisa_Nakaue.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
+      "id": 102
     }
   ]
 }

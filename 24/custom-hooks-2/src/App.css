@@ -1,6 +1,6 @@
 .app {
   width: 100%;
-  max-width: 720px;
+  max-width: 760px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -20,13 +20,8 @@ h1 {
 }
 
 h2 {
-  margin: 0 0 12px;
-  font-size: 17px;
-}
-
-.rastreador p {
   margin: 0;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 .cargando,
@@ -46,30 +41,146 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
-.personajes-header h2 {
-  margin: 0;
+.contador {
+  font-size: 13px;
+  color: #888;
 }
 
-.personajes-header button {
-  padding: 8px 14px;
+.formulario-personaje {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 16px;
+  background: #f4f5f7;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.formulario-personaje h3 {
+  width: 100%;
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.formulario-personaje .campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 120px;
+}
+
+.formulario-personaje label {
+  font-size: 12px;
+  color: #555;
+}
+
+.formulario-personaje input,
+.formulario-personaje select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.formulario-personaje button {
+  padding: 9px 16px;
   border: none;
   border-radius: 6px;
   background: #4361ee;
   color: #fff;
   cursor: pointer;
   font-size: 13px;
+  white-space: nowrap;
 }
 
-.personajes-header button:hover {
-  background: #364fc7;
+.formulario-personaje button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.campo-ancho {
+  flex-basis: 100%;
+}
+
+.tarjeta-preview {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: #fff;
+  border: 1px dashed #4361ee;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #444;
+}
+
+.tarjeta-preview-imagen {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.tarjeta-preview-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #4361ee;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  flex: none;
+}
+
+.formulario-botones {
+  display: flex;
+  gap: 8px;
+}
+
+.boton-secundario {
+  background: #fff !important;
+  color: #666 !important;
+  border: 1px solid #ccc !important;
+}
+
+.buscador-nombre {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.buscador-nombre input {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.buscador-nombre button {
+  padding: 9px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #4361ee;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
 }
 
 .grid-personajes {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 14px;
 }
 
@@ -78,6 +189,7 @@ h2 {
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .tarjeta-personaje img {
@@ -85,6 +197,18 @@ h2 {
   aspect-ratio: 1;
   object-fit: cover;
   display: block;
+}
+
+.avatar-generico {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4361ee;
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .tarjeta-personaje h3 {
@@ -98,40 +222,29 @@ h2 {
   color: #666;
 }
 
-.estado-alive::before {
-  content: "● ";
-  color: #2b8a3e;
+.estado-alive::before { content: "● "; color: #2b8a3e; }
+.estado-dead::before { content: "● "; color: #dc3545; }
+.estado-unknown::before { content: "● "; color: #adb5bd; }
+
+.tarjeta-personaje-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 8px;
 }
 
-.estado-dead::before {
-  content: "● ";
-  color: #dc3545;
-}
-
-.estado-unknown::before {
-  content: "● ";
-  color: #adb5bd;
-}
-
-.buscador input {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
+.tarjeta-personaje-acciones button {
+  padding: 6px 8px;
+  border: none;
   border-radius: 6px;
-  font-size: 14px;
-  margin-bottom: 14px;
+  background: #fff;
+  color: #4361ee;
+  border: 1px solid #4361ee;
+  cursor: pointer;
+  font-size: 11px;
 }
 
-.tarjeta-personaje-grande {
-  max-width: 220px;
-  margin: 0 auto;
-}
-
-.tarjeta-personaje-grande h3 {
-  font-size: 16px;
-  margin: 10px 8px 4px;
-}
-
-.tarjeta-personaje-grande .estado {
-  font-size: 13px;
+.boton-eliminar {
+  color: #dc3545 !important;
+  border-color: #dc3545 !important;
 }
