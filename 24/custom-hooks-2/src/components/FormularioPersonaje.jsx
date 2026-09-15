@@ -16,26 +16,27 @@ const ESTADOS = ["Alive", "Dead", "unknown"]
 // Este componente tiene la responsabilidad de reunir la informacion para crear el registro
 // no tiene la responsabilidad de enviar los datos
 function FormularioPersonaje({
-//   personajeEnEdicion,
-  onCrear,
-//   onCancelar,
+personajeEnEdicion,
+onCrear,
+onCancelar,
+onActualizar,
 }) {
   const [form, setForm] = useState(FORM_VACIO);
   const [enviando, setEnviando] = useState(false);
 
   // va a manejar los cambios en el personajeEnEdicion
-//   useEffect(() => {
-//     if (personajeEnEdicion) {
-//       setForm({
-//         name: personajeEnEdicion.name,
-//         species: personajeEnEdicion.species,
-//         status: personajeEnEdicion.status,
-//         image: personajeEnEdicion.image || "",
-//       });
-//     } else {
-//       setForm(FORM_VACIO);
-//     }
-//   }, [personajeEnEdicion]);
+  useEffect(() => {
+    if (personajeEnEdicion) {
+      setForm({
+        name: personajeEnEdicion.name,
+        species: personajeEnEdicion.species,
+        status: personajeEnEdicion.status,
+        image: personajeEnEdicion.image || "",
+      });
+    } else {
+      setForm(FORM_VACIO);
+    }
+  }, [personajeEnEdicion]);
 
   // Usa los atributos name y value
   // para saber que parte del objeto form actualizar
@@ -51,16 +52,20 @@ function FormularioPersonaje({
     if(form.name.trim() === "" || form.species.trim() === "") return;
 
     setEnviando(true)
-    // await genera una pausa, manda la informacion y espera una respuesta
-    await onCrear(form)
-    // hasta que no responda la api no setea el formulario ni el enviando
-    setForm(FORM_VACIO)
+    if(personajeEnEdicion){
+      await onActualizar(personajeEnEdicion.id, form)
+    } else {
+      // await genera una pausa, manda la informacion y espera una respuesta
+      await onCrear(form)
+      // hasta que no responda la api no setea el formulario ni el enviando
+      setForm(FORM_VACIO)
+    }
     setEnviando(false)
   };
 
   return (
     <form onSubmit={handleSubmit} className="formulario-personaje">
-      <h3> Creando personaje </h3>
+      <h3> {personajeEnEdicion ? `Editando a ${personajeEnEdicion.name}` : "Creando personaje"} </h3>
       <div className="campo">
         <label htmlFor="name">Nombre</label>
         <input
@@ -125,14 +130,13 @@ function FormularioPersonaje({
         <div className="formulario-botones" >
             {/* // si disabled está en true no podes clickear el botón */}
         <button type="submit" disabled={enviando}>
-        Crear personaje
+          {enviando ? "Guardando..." : personajeEnEdicion ? "Guardar cambios" : "Crear personaje"}
         </button>
-        {/* {personajeEnEdicion && (
-           
+        {personajeEnEdicion && (
             <button className="botón-secundario" onClick={onCancelar} type="button" >
                 Cancelar
             </button>
-        )} */}
+        )}
         </div>
 
     </form>

@@ -331,51 +331,6 @@
       "created": "2017-11-04T19:26:56.301Z"
     },
     {
-      "id": 6,
-      "name": "Abadango Cluster Princess",
-      "status": "Alive",
-      "species": "Alien",
-      "type": "",
-      "gender": "Female",
-      "origin": {
-        "name": "Abadango",
-        "url": "https://rickandmortyapi.com/api/location/2"
-      },
-      "location": {
-        "name": "Abadango",
-        "url": "https://rickandmortyapi.com/api/location/2"
-      },
-      "image": "http://localhost:3001/images/6.jpeg",
-      "episode": [
-        "https://rickandmortyapi.com/api/episode/27"
-      ],
-      "url": "https://rickandmortyapi.com/api/character/6",
-      "created": "2017-11-04T19:50:28.250Z"
-    },
-    {
-      "id": 7,
-      "name": "Abradolf Lincler",
-      "status": "unknown",
-      "species": "Human",
-      "type": "Genetic experiment",
-      "gender": "Male",
-      "origin": {
-        "name": "Earth (Replacement Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/20"
-      },
-      "location": {
-        "name": "Testicle Monster Dimension",
-        "url": "https://rickandmortyapi.com/api/location/21"
-      },
-      "image": "http://localhost:3001/images/7.jpeg",
-      "episode": [
-        "https://rickandmortyapi.com/api/episode/10",
-        "https://rickandmortyapi.com/api/episode/11"
-      ],
-      "url": "https://rickandmortyapi.com/api/character/7",
-      "created": "2017-11-04T19:59:20.523Z"
-    },
-    {
       "id": 8,
       "name": "Adjudicator Rick",
       "status": "Dead",
@@ -396,28 +351,6 @@
       ],
       "url": "https://rickandmortyapi.com/api/character/8",
       "created": "2017-11-04T20:03:34.737Z"
-    },
-    {
-      "id": 9,
-      "name": "Agency Director",
-      "status": "Dead",
-      "species": "Human",
-      "type": "",
-      "gender": "Male",
-      "origin": {
-        "name": "Earth (Replacement Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/20"
-      },
-      "location": {
-        "name": "Earth (Replacement Dimension)",
-        "url": "https://rickandmortyapi.com/api/location/20"
-      },
-      "image": "http://localhost:3001/images/9.jpeg",
-      "episode": [
-        "https://rickandmortyapi.com/api/episode/24"
-      ],
-      "url": "https://rickandmortyapi.com/api/character/9",
-      "created": "2017-11-04T20:06:54.976Z"
     },
     {
       "id": 10,
@@ -462,28 +395,6 @@
       ],
       "url": "https://rickandmortyapi.com/api/character/11",
       "created": "2017-11-04T20:20:20.965Z"
-    },
-    {
-      "id": 12,
-      "name": "Alexander",
-      "status": "Dead",
-      "species": "Human",
-      "type": "",
-      "gender": "Male",
-      "origin": {
-        "name": "Earth (C-137)",
-        "url": "https://rickandmortyapi.com/api/location/1"
-      },
-      "location": {
-        "name": "Anatomy Park",
-        "url": "https://rickandmortyapi.com/api/location/5"
-      },
-      "image": "http://localhost:3001/images/12.jpeg",
-      "episode": [
-        "https://rickandmortyapi.com/api/episode/3"
-      ],
-      "url": "https://rickandmortyapi.com/api/character/12",
-      "created": "2017-11-04T20:32:33.144Z"
     },
     {
       "id": 13,
@@ -2479,6 +2390,20 @@
       "status": "Alive",
       "image": "https://upload.wikimedia.org/wikipedia/en/b/be/Luigi_by_Shigehisa_Nakaue.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
       "id": 102
+    },
+    {
+      "name": "devil javi",
+      "species": "human",
+      "status": "Alive",
+      "image": "",
+      "id": 103
+    },
+    {
+      "name": "carlos balá",
+      "species": "human",
+      "status": "Alive",
+      "image": "https://cloudfront-us-east-1.images.arcpublishing.com/abccolor/H44RBZO7LJBSRP3ANY2K5HU4KI.webp",
+      "id": 104
     }
   ]
 }
