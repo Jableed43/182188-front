@@ -1,1 +1,1 @@
-export const URL_PERSONAJES = "http://localhost:3001/characters";
+export const URL_PERSONAJES = "http://localhost:3000/characters";
