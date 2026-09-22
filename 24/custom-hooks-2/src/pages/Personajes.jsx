@@ -5,8 +5,10 @@ import FormularioPersonaje from "../components/FormularioPersonaje";
 import useActualizarPersonaje from "../hooks/useActualizarPersonaje";
 import useEliminarPersonaje from "../hooks/useEliminarPersonaje";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Personajes() {
+  const { usuario } = useAuth();
   const [personajeEnEdicion, setPersonajeEnEdicion] = useState(null);
   const { error, loading, personajes, setPersonajes, fetchPersonajes } =
     useFetchPersonajes();
@@ -36,7 +38,11 @@ function Personajes() {
     }
   };
 
-  const handleEliminar = async (id) => {
+  const handleEliminar = async (e, id) => {
+    // al navegar con click en la card por el Link se disparaba junto
+    // a esta función y daba 404 porque queria acceder a un id borrado
+    e.preventDefault();
+    e.stopPropagation();
     const eliminado = await eliminarPersonaje(id);
     // Este filter tambien evita llamados a la API
     // lo que hace es solamente va a tomar los datos donde el id no sea el mismo que del dato eliminado
@@ -68,33 +74,41 @@ function Personajes() {
           // Si estás dentro de una page la redireccion de Link con to
           // va a ser a una subpagina de la misma pagina
           // esta es "/personajes", mi redireccion es a /personajes/personaje.id
-          <Link to={`${personaje.id}`} className="tarjeta-personaje" >
-          <article key={personaje.id}>
-            {personaje.image ? (
-              <img src={personaje.image} alt={personaje.name} />
-            ) : (
-              <div className="avatar-generico">{personaje.name.charAt(0)}</div>
-            )}
-            <h3>{personaje.name}</h3>
-            <p className="estado">
-              {personaje.status} . {personaje.species}
-            </p>
-            <div className="tarjeta-personaje-acciones">
-              <button
-                type="button"
-                onClick={() => setPersonajeEnEdicion(personaje)}
-              >
-                Editar
-              </button>
-              <button
-                type="button"
-                className="boton-eliminar"
-                onClick={() => handleEliminar(personaje.id)}
-              >
-                Eliminar
-              </button>
-            </div>
-          </article>
+          <Link
+            to={`${personaje.id}`}
+            className="tarjeta-personaje"
+            key={personaje.id}
+          >
+            <article>
+              {personaje.image ? (
+                <img src={personaje.image} alt={personaje.name} />
+              ) : (
+                <div className="avatar-generico">
+                  {personaje.name.charAt(0)}
+                </div>
+              )}
+              <h3>{personaje.name}</h3>
+              <p className="estado">
+                {personaje.status} . {personaje.species}
+              </p>
+              {usuario && (
+                <div className="tarjeta-personaje-acciones">
+                  <button
+                    type="button"
+                    onClick={() => setPersonajeEnEdicion(personaje)}
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    className="boton-eliminar"
+                    onClick={(e) => handleEliminar(e, personaje.id)}
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              )}
+            </article>
           </Link>
         ))}
       </div>

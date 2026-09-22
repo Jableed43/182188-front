@@ -4,12 +4,14 @@ import useFetchPersonaje from "../hooks/useFetchPersonaje";
 import useActualizarPersonaje from "../hooks/useActualizarPersonaje";
 import useEliminarPersonaje from "../hooks/useEliminarPersonaje";
 import FormularioPersonaje from "../components/FormularioPersonaje";
+import { useAuth } from "../context/AuthContext";
 
 // Página de detalle — vive en "/personajes/:id". El :id de la ruta se lee
 // con useParams() y viaja directo al Custom Hook de fetch singular.
 function DetallePersonaje() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { usuario } = useAuth();
 
   const { personaje, setPersonaje, loading, error } = useFetchPersonaje(id);
   const { actualizarPersonaje } = useActualizarPersonaje();
@@ -60,6 +62,7 @@ function DetallePersonaje() {
             {personaje.status} · {personaje.species}
           </p>
 
+          {usuario && (
           <div className="detalle-acciones">
             <button type="button" onClick={() => setEditando(true)}>
               Editar
@@ -68,6 +71,7 @@ function DetallePersonaje() {
               Eliminar
             </button>
           </div>
+              )}
         </>
       )}
     </section>

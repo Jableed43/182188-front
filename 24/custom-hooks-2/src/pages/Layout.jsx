@@ -3,6 +3,7 @@
 import { Link, Outlet } from "react-router-dom";
 import "../App.css";
 import { useTheme } from "../context/ThemeContext";
+import { useAuth } from "../context/AuthContext";
 
 // Un componente Layout en React Router v6+ es un componente contenedor (wrapper) que define la estructura visual compartida entre varias rutas (como una barra de navegación, un sidebar o un footer) y utiliza el componente <Outlet/> para renderizar de forma dinámica el contenido específico de cada subruta.
 
@@ -11,6 +12,7 @@ import { useTheme } from "../context/ThemeContext";
 // Layout es una estructura que van a tener todos mis componentes
 function Layout() {
   const { isDark, toggleTheme } = useTheme()
+  const { usuario, logout } = useAuth()
   return (
     // cambio de className dinamica con renderizado condicional
     <main className={`app ${isDark ? "dark" : ""}`}> 
@@ -21,6 +23,24 @@ function Layout() {
           <Link to="/">Inicio</Link>
           <Link to="/personajes">Personajes</Link>
         </nav>
+
+        <div className="sesion">
+        { usuario ? (
+          <>
+            <span>Hola, {usuario.name}</span>
+              <button type="button" onClick={logout}>
+                Cerrar Sesión
+              </button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" > Iniciar sesión </Link>
+            <Link to="/registro" > Registrarme </Link>
+          </>
+
+        ) }
+        </div>
+
         <button type="button" className="boton-tema" onClick={toggleTheme} >
           { isDark ? "🌞 Claro" : "🌙 Oscuro" }
         </button>
