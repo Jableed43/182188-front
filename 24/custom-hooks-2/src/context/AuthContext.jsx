@@ -1,6 +1,12 @@
 // Va a manejar el contexto del usuario
 // de esta forma podemos encontrar el usuario desde cual lado
 
+// El warning de "Fast Refresh" pide separar el Provider y el hook en archivos
+// distintos. Acá los dejamos juntos a propósito (mismo patrón que ThemeContext
+// y que todas las clases anteriores): solo afecta que, en desarrollo, editar
+// este archivo recarga la página entera en vez de conservar el estado — no
+// afecta el comportamiento en producción.
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from "react";
 import { URL_USUARIOS } from "../utils/api";
 

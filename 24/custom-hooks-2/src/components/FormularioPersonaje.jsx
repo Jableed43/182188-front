@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useState } from "react";
 
 // O -> de solid el uso de constantes
@@ -24,19 +23,26 @@ onActualizar,
   const [form, setForm] = useState(FORM_VACIO);
   const [enviando, setEnviando] = useState(false);
 
-  // va a manejar los cambios en el personajeEnEdicion
-  useEffect(() => {
-    if (personajeEnEdicion) {
-      setForm({
-        name: personajeEnEdicion.name,
-        species: personajeEnEdicion.species,
-        status: personajeEnEdicion.status,
-        image: personajeEnEdicion.image || "",
-      });
-    } else {
-      setForm(FORM_VACIO);
-    }
-  }, [personajeEnEdicion]);
+  // Fix del warning "setState síncrono dentro de un efecto": en vez de un
+  // useEffect que compare personajeEnEdicion contra su valor anterior, se
+  // guarda ese valor anterior en estado y se compara durante el render.
+  // Si cambió, se ajusta "form" ahí mismo (React permite setState en el
+  // cuerpo del componente cuando está guardado por un if así: no dispara
+  // un re-render extra visible, solo evita pintar con datos viejos).
+  const [personajeAnterior, setPersonajeAnterior] = useState(personajeEnEdicion);
+  if (personajeEnEdicion !== personajeAnterior) {
+    setPersonajeAnterior(personajeEnEdicion);
+    setForm(
+      personajeEnEdicion
+        ? {
+            name: personajeEnEdicion.name,
+            species: personajeEnEdicion.species,
+            status: personajeEnEdicion.status,
+            image: personajeEnEdicion.image || "",
+          }
+        : FORM_VACIO,
+    );
+  }
 
   // Usa los atributos name y value
   // para saber que parte del objeto form actualizar

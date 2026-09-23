@@ -1,5 +1,8 @@
 // Context API ya viene integrado en react
 
+// Ver la nota en AuthContext.jsx: el Provider y el hook quedan juntos a
+// propósito, así que se silencia el warning de Fast Refresh puntual.
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from "react";
 
 // Te permite crear un contexto que los componentes pueden proveer o leer

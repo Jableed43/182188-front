@@ -9,25 +9,19 @@ function useFetchPersonajes() {
   // Error, para enviarlo a la pantalla y para ver en tiempo real si hay un error
   const [error, setError] = useState(null);
 
-  // Implementacion de Funcion principal
+  // Se usa para volver a pedir la lista después de un evento (ej: crear un personaje),
+  // así que acá sí resetea loading/error antes de pedir de nuevo.
   const fetchPersonajes = async () => {
-    // seteamos loading en true
     setLoading(true);
-    // seteamos error a null, ya que no sabemos si quedó el estado guardado de la ejecucion anterior
     setError(null);
 
     try {
       const respuesta = await fetch(URL_PERSONAJES);
-      // Validamos Si mi llamado a la API NO salio bien, entonces...
       if (!respuesta.ok) {
         throw new Error(
           `Error en la llamada: ${respuesta.status} ${respuesta.statusText}`,
         );
       }
-      // Parsea de JSON a objeto de js
-      // al hacer esto tenemos control total:
-      // - puedo aplicarle metodos de tipos (string, array, objetos, numeros)
-      // - aplicarle funciones, bucles, destructurarlo
       const personajesParseados = await respuesta.json();
 
       setPersonajes(personajesParseados);
@@ -39,7 +33,28 @@ function useFetchPersonajes() {
   };
 
   useEffect(() => {
-    fetchPersonajes();
+    // Fix: nada de setState síncrono antes del primer await dentro del efecto.
+    // loading ya arranca en true y error ya arranca en null por los useState
+    // iniciales, así que la carga del montaje no necesita resetearlos de nuevo.
+    const cargarInicial = async () => {
+      try {
+        const respuesta = await fetch(URL_PERSONAJES);
+        if (!respuesta.ok) {
+          throw new Error(
+            `Error en la llamada: ${respuesta.status} ${respuesta.statusText}`,
+          );
+        }
+        const personajesParseados = await respuesta.json();
+
+        setPersonajes(personajesParseados);
+      } catch (error) {
+        setError(error.message || "Ocurrió un error en la API");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    cargarInicial();
   }, []);
 
   return { personajes, loading, error, fetchPersonajes, setPersonajes };
