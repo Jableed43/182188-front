@@ -84,7 +84,7 @@ function Personajes() {
                 <img src={personaje.image} alt={personaje.name} />
               ) : (
                 <div className="avatar-generico">
-                  {personaje.name.charAt(0)}
+                  {personaje.name}
                 </div>
               )}
               <h3>{personaje.name}</h3>

@@ -54,7 +54,7 @@ function DetallePersonaje() {
           {personaje.image ? (
             <img src={personaje.image} alt={personaje.name} className="detalle-imagen" />
           ) : (
-            <div className="avatar-generico avatar-grande">{personaje.name.charAt(0)}</div>
+            <div className="avatar-generico avatar-grande">{personaje.name}</div>
           )}
 
           <h2>{personaje.name}</h2>

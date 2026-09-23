@@ -126,7 +126,7 @@ onActualizar,
         {form.image ? (
           <img src={form.image} alt="" className="tarjeta-preview-imagen" />
         ) : (
-          <div className="tarjeta-preview-avatar">{(form.name || "?").charAt(0)}</div>
+          <div className="tarjeta-preview-avatar">{(form.name || "?")}</div>
         )}
         <span className={`estado estado-${form.status.toLowerCase()}`}>
           {form.name || "Nombre..."} · {form.species || "Especie..."}
