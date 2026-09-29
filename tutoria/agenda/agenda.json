@@ -1,0 +1,167 @@
+{
+  "profesionales": [
+    {
+      "id": "1",
+      "nombre": "Ana",
+      "apellido": "Gómez",
+      "especialidad": "Kinesiología",
+      "disponibilidad": [
+        {
+          "dia": "Lunes",
+          "activa": true,
+          "slots": [
+            "09:00",
+            "10:00",
+            "11:00",
+            "16:00",
+            "17:00"
+          ]
+        },
+        {
+          "dia": "Martes",
+          "activa": true,
+          "slots": [
+            "09:00",
+            "10:00",
+            "11:00"
+          ]
+        },
+        {
+          "dia": "Miércoles",
+          "activa": true,
+          "slots": [
+            "09:00",
+            "10:00",
+            "11:00",
+            "16:00",
+            "17:00"
+          ]
+        },
+        {
+          "dia": "Jueves",
+          "activa": true,
+          "slots": [
+            "09:00",
+            "10:00",
+            "11:00"
+          ]
+        },
+        {
+          "dia": "Viernes",
+          "activa": true,
+          "slots": [
+            "09:00",
+            "10:00"
+          ]
+        },
+        {
+          "dia": "Sábado",
+          "activa": false,
+          "slots": []
+        },
+        {
+          "dia": "Domingo",
+          "activa": false,
+          "slots": []
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "nombre": "Martín",
+      "apellido": "Ríos",
+      "especialidad": "Psicología",
+      "disponibilidad": [
+        {
+          "dia": "Lunes",
+          "activa": true,
+          "slots": [
+            "14:00",
+            "15:00",
+            "16:00"
+          ]
+        },
+        {
+          "dia": "Martes",
+          "activa": false,
+          "slots": []
+        },
+        {
+          "dia": "Miércoles",
+          "activa": true,
+          "slots": [
+            "14:00",
+            "15:00",
+            "16:00"
+          ]
+        },
+        {
+          "dia": "Jueves",
+          "activa": true,
+          "slots": [
+            "14:00",
+            "15:00",
+            "16:00",
+            "17:00"
+          ]
+        },
+        {
+          "dia": "Viernes",
+          "activa": false,
+          "slots": []
+        },
+        {
+          "dia": "Sábado",
+          "activa": false,
+          "slots": []
+        },
+        {
+          "dia": "Domingo",
+          "activa": false,
+          "slots": []
+        }
+      ]
+    }
+  ],
+  "pacientes": [
+    {
+      "id": "1",
+      "nombre": "Julia",
+      "apellido": "Fernández"
+    },
+    {
+      "id": "2",
+      "nombre": "Bruno",
+      "apellido": "Suárez"
+    }
+  ],
+  "turnos": [
+    {
+      "profesionalId": "1",
+      "pacienteId": "1",
+      "fecha": "2026-09-28",
+      "hora": "09:00",
+      "motivo": "",
+      "estado": "completado",
+      "id": 1
+    },
+    {
+      "profesionalId": "1",
+      "pacienteId": "1",
+      "fecha": "2026-09-30",
+      "hora": "10:00",
+      "motivo": "sesion de control",
+      "estado": "completado",
+      "id": 2
+    }
+  ],
+  "bloqueos": [
+    {
+      "profesionalId": "1",
+      "fecha": "2026-10-05",
+      "hora": null,
+      "motivo": "Congreso de kinesiología",
+      "id": 1
+    }
+  ]
+}
