@@ -12,11 +12,34 @@ import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import './agenda.css';
 
+// Franjas horarias que se pueden tildar al armar la disponibilidad semanal o
+// un bloqueo puntual. Es una lista fija y simple a propósito (no hay un
+// selector de hora libre): alcanza para lo que pide este proyecto y evita
+// tener que validar formatos de hora arbitrarios.
 const HORAS_POSIBLES = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'];
+// Mismos 7 días que DIAS_SEMANA pero reordenados para que la semana laboral
+// (Lunes a Sábado) se vea antes que Domingo en el formulario.
 const DIAS_LABORALES = DIAS_SEMANA.filter((d) => d !== 'Domingo').concat('Domingo');
 
-// Componente standalone: permite bloquear días/horarios puntuales (por ejemplo,
-// una cita o evento del profesional) y editar la disponibilidad semanal recurrente.
+/**
+ * Componente standalone: todo lo que un profesional necesita para configurar
+ * cuándo NO atiende. Tiene tres partes independientes:
+ *
+ * 1. Disponibilidad semanal — el horario recurrente ("todos los lunes de 9 a
+ *    12"), se edita acá y se guarda entero en profesional.disponibilidad.
+ * 2. Feriados — la decisión de trabajar o no cada feriado cargado (ver
+ *    src/services/feriadoService.js). Tildar "No quiero trabajar" crea un
+ *    bloqueo de día completo con feriadoId apuntando a ese feriado; destildar
+ *    lo borra. La disponibilidad semanal NO se toca por esto — es una excepción
+ *    puntual, no un cambio permanente al horario recurrente.
+ * 3. Bloqueos puntuales — el mecanismo general para cualquier otra excepción
+ *    (una licencia, un congreso, una reunión a una hora concreta) que no sea
+ *    un feriado. Los bloqueos por feriado (parte 2) también aparecen listados
+ *    acá abajo, porque en el fondo son el mismo tipo de registro.
+ *
+ * Props:
+ * - profesionalId (string, requerido): de qué profesional se edita la agenda.
+ */
 const BloqueoAgenda = ({ profesionalId }) => {
   const [profesional, setProfesional] = useState(null);
   const [disponibilidad, setDisponibilidad] = useState([]);
@@ -27,6 +50,12 @@ const BloqueoAgenda = ({ profesionalId }) => {
   const [hora, setHora] = useState('');
   const [motivo, setMotivo] = useState('');
 
+  // Trae todo lo que necesita esta pantalla: los datos del profesional (para
+  // mostrar su nombre y precargar su disponibilidad), sus bloqueos, y los
+  // feriados futuros (los pasados no tiene sentido mostrarlos para bloquear).
+  // No hay un endpoint "/profesionales/:id" separado en uso acá: se trae la
+  // lista completa y se busca el profesional, igual que en el resto del
+  // proyecto (ver el comentario en turnoService.js sobre esta decisión).
   const cargar = async () => {
     const profesionales = await getProfesionales();
     const p = profesionales.find((x) => x.id === profesionalId);
@@ -39,17 +68,27 @@ const BloqueoAgenda = ({ profesionalId }) => {
 
   useEffect(() => {
     if (profesionalId) {
+      // `cargar` es async y llama a varios setState; envolverlo en
+      // Promise.resolve().then(...) evita que el linter de reglas de hooks se
+      // queje de "no llames setState directamente dentro de un efecto" — el
+      // efecto en sí sigue siendo síncrono, solo dispara la carga.
       Promise.resolve().then(cargar);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profesionalId]);
 
+  // Prende/apaga un día entero de la disponibilidad semanal. Al apagarlo se
+  // vacían sus slots (no tendría sentido guardar horarios de un día inactivo).
+  // Esto solo cambia el estado local en memoria: no pega a la API hasta que
+  // se aprieta "Guardar disponibilidad".
   const toggleDiaActivo = (dia) => {
     setDisponibilidad((prev) =>
       prev.map((d) => (d.dia === dia ? { ...d, activa: !d.activa, slots: !d.activa ? d.slots : [] } : d))
     );
   };
 
+  // Agrega o quita un horario puntual dentro de un día de la disponibilidad
+  // semanal. También es solo estado local hasta "Guardar disponibilidad".
   const toggleSlot = (dia, slot) => {
     setDisponibilidad((prev) =>
       prev.map((d) => {
@@ -61,10 +100,13 @@ const BloqueoAgenda = ({ profesionalId }) => {
     );
   };
 
+  // Recién acá se persiste todo el array `disponibilidad` armado arriba.
   const guardarDisponibilidad = async () => {
     await actualizarDisponibilidad(profesionalId, disponibilidad);
   };
 
+  // Alta de un bloqueo puntual desde el formulario de abajo (evento, licencia,
+  // etc. — no viene de la sección de feriados, esa tiene su propio flujo).
   const handleCrearBloqueo = async (e) => {
     e.preventDefault();
     if (!fecha) return;
@@ -80,8 +122,17 @@ const BloqueoAgenda = ({ profesionalId }) => {
     setBloqueos(await getBloqueosPorProfesional(profesionalId));
   };
 
+  // Busca si ya existe un bloqueo generado desde la sección de feriados para
+  // un feriado puntual (comparando por feriadoId, no por fecha, para no
+  // confundirlo con un bloqueo puntual que el profesional haya cargado a mano
+  // ese mismo día por otro motivo).
   const bloqueoDeFeriado = (feriadoId) => bloqueos.find((b) => b.feriadoId === feriadoId);
 
+  // Alterna la decisión de un profesional sobre un feriado puntual: si ya lo
+  // había bloqueado, lo desbloquea (borra ese bloqueo); si no, crea uno nuevo
+  // de día completo con el motivo y el feriadoId precargados. Esta es la
+  // única forma en que la app crea un bloqueo con feriadoId — el formulario
+  // manual de abajo nunca lo setea.
   const toggleFeriado = async (feriado) => {
     const existente = bloqueoDeFeriado(feriado.id);
     if (existente) {

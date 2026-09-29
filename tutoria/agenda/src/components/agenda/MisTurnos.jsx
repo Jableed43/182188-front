@@ -14,7 +14,15 @@ const nombreProfesional = (profesionales, profesionalId) => {
   return p ? `${p.nombre} ${p.apellido} (${p.especialidad})` : 'Profesional';
 };
 
-// Componente standalone: turnos propios del paciente, con opción de cancelar.
+/**
+ * Componente standalone: los turnos de un paciente puntual, separados en
+ * "Próximos" (estado "reservado") e "Historial" (completados o cancelados),
+ * con la opción de cancelar los próximos.
+ *
+ * Props:
+ * - pacienteId (string, requerido): de quién se muestran los turnos. No hay
+ *   selector de paciente acá — lo pasa quien use el componente.
+ */
 const MisTurnos = ({ pacienteId }) => {
   const [turnos, setTurnos] = useState([]);
   const [profesionales, setProfesionales] = useState([]);
@@ -28,15 +36,21 @@ const MisTurnos = ({ pacienteId }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pacienteId]);
 
+  // Cancelar no borra el turno: lo deja en estado "cancelado" para que quede
+  // en el historial (a diferencia de borrarlo, esto preserva el registro).
   const cancelarTurno = async (turnoId) => {
     await actualizarEstadoTurno(turnoId, 'cancelado');
     cargarTurnos();
   };
 
+  // Próximos: los más cercanos primero (orden ascendente por fecha+hora).
   const proximos = turnos
     .filter((t) => t.estado === 'reservado')
     .sort((a, b) => (a.fecha + a.hora).localeCompare(b.fecha + b.hora));
 
+  // Historial: los más recientes primero (orden descendente). Al ser strings
+  // "yyyy-MM-dd" + "HH:mm", concatenarlos y compararlos como texto alcanza
+  // para ordenar cronológicamente sin tener que parsear fechas.
   const historial = turnos
     .filter((t) => t.estado !== 'reservado')
     .sort((a, b) => (b.fecha + b.hora).localeCompare(a.fecha + a.hora));

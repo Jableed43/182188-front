@@ -13,8 +13,21 @@ const nombrePaciente = (pacientes, pacienteId) => {
   return p ? `${p.nombre} ${p.apellido}` : 'Paciente';
 };
 
-// Componente standalone: agenda del profesional para el día, con acciones
-// para marcar el turno como completado o cancelarlo.
+/**
+ * Componente standalone: la agenda del profesional. Calendario mensual con un
+ * indicador en los días que tienen turnos, y debajo el detalle de los turnos
+ * del día seleccionado con acciones para marcarlos como completados o
+ * cancelarlos.
+ *
+ * Props:
+ * - profesionalId (string, requerido): de qué profesional se muestra la
+ *   agenda. Sin este id (string vacío), muestra un estado vacío en vez de
+ *   romper — así se puede montar el componente antes de tener el id resuelto.
+ *
+ * A diferencia de ReservarTurno.jsx, este componente NO usa
+ * getSlotsDisponibles: acá lo que importa es qué turnos YA existen ese día
+ * (para gestionarlos), no qué horarios quedan libres para reservar uno nuevo.
+ */
 const GestionTurnosProfesional = ({ profesionalId }) => {
   const [turnos, setTurnos] = useState([]);
   const [pacientes, setPacientes] = useState([]);
@@ -29,6 +42,9 @@ const GestionTurnosProfesional = ({ profesionalId }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profesionalId]);
 
+  // Turnos del día elegido, ordenados por hora. Los cancelados no se muestran
+  // en esta lista (el profesional no necesita "gestionar" algo que ya no va a
+  // pasar), pero siguen existiendo en agenda.json por si se quiere auditar.
   const turnosDelDia = useMemo(() => {
     const fechaStr = toISODate(selectedDate);
     return turnos
@@ -36,11 +52,15 @@ const GestionTurnosProfesional = ({ profesionalId }) => {
       .sort((a, b) => a.hora.localeCompare(b.hora));
   }, [turnos, selectedDate]);
 
+  // El puntito del calendario marca "este día tiene al menos un turno activo".
   const hasEvento = (day) => {
     const fechaStr = toISODate(day);
     return turnos.some((t) => t.fecha === fechaStr && t.estado !== 'cancelado');
   };
 
+  // Usada tanto para "Completar" como para "Cancelar" (mismo endpoint, distinto
+  // valor de estado). Después de cambiar el estado, se vuelve a pedir la lista
+  // completa de turnos para que la UI quede al día.
   const cambiarEstado = async (turnoId, estado) => {
     await actualizarEstadoTurno(turnoId, estado);
     cargarTurnos();

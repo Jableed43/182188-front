@@ -1,3 +1,13 @@
+/* Estilos compartidos por los 4 componentes standalone de agenda (Calendario,
+   ReservarTurno, MisTurnos, GestionTurnosProfesional, BloqueoAgenda). No hay
+   una librería de UI de por medio (nada de Material UI, Bootstrap, etc.) a
+   propósito, para mantener el proyecto simple — es CSS plano organizado por
+   secciones con comentarios, sin ningún build step extra.
+
+   Las variables de color (--primary, --error, etc.) están definidas en la
+   clase raíz .agenda y se heredan hacia abajo por CSS normal: por eso cada
+   componente envuelve todo su contenido en un <div className="agenda">. */
+
 .agenda {
   --primary: #4f46e5;
   --secondary: #1e293b;
@@ -247,7 +257,9 @@
 .badge-cancelado { background: #fff1f2; color: var(--error); }
 .badge-completado { background: #f0fdf4; color: var(--success); }
 
-/* Modal simple */
+/* Modal simple — clases preparadas por si algún componente necesita un modal
+   propio más adelante. Hoy (2026) ningún componente las usa: las confirmaciones
+   se resuelven inline en la misma página en vez de con un modal. */
 .modal-overlay {
   position: fixed;
   inset: 0;

@@ -11,8 +11,24 @@ import { getSlotsDisponibles } from '../../utils/slots';
 import { formatFechaLarga, toISODate } from '../../utils/dateUtils';
 import './agenda.css';
 
-// Componente standalone: reserva de turno de terapia.
-// Recibe el id del paciente que reserva (por ejemplo, el usuario logueado).
+/**
+ * Componente standalone: flujo completo de reserva de un turno.
+ *
+ * Props:
+ * - pacienteId (string, requerido): a nombre de quién se reserva el turno
+ *   (típicamente el usuario logueado). Este componente no maneja login ni
+ *   selección de paciente — eso lo decide quien lo use (ver App.jsx para el
+ *   ejemplo más simple, con un id hardcodeado).
+ * - onReservado (fn, opcional): callback que se dispara después de reservar
+ *   con éxito, por si el que usa este componente necesita reaccionar (cerrar
+ *   un modal, navegar a otra pantalla, etc.). No es necesario para que el
+ *   componente funcione solo.
+ *
+ * Flujo: elegir profesional → elegir día en el calendario → elegir un horario
+ * libre de esa lista → completar motivo (opcional) → confirmar. La lista de
+ * horarios libres depende de getSlotsDisponibles (src/utils/slots.js), que ya
+ * excluye lo bloqueado y lo ya reservado.
+ */
 const ReservarTurno = ({ pacienteId, onReservado }) => {
   const [profesionales, setProfesionales] = useState([]);
   const [profesionalId, setProfesionalId] = useState('');
@@ -24,11 +40,15 @@ const ReservarTurno = ({ pacienteId, onReservado }) => {
   const [motivo, setMotivo] = useState('');
   const [mensaje, setMensaje] = useState(null);
 
+  // Profesionales y feriados no dependen de qué profesional se eligió, así que
+  // se cargan una sola vez al montar el componente.
   useEffect(() => {
     getProfesionales().then(setProfesionales);
     getFeriados().then(setFeriados);
   }, []);
 
+  // Turnos y bloqueos sí dependen del profesional elegido: se vuelven a pedir
+  // cada vez que cambia profesionalId (y se ejecuta también al elegir el primero).
   useEffect(() => {
     if (!profesionalId) return;
     getTurnosPorProfesional(profesionalId).then(setTurnos);
@@ -37,25 +57,40 @@ const ReservarTurno = ({ pacienteId, onReservado }) => {
 
   const profesional = profesionales.find((p) => p.id === profesionalId);
 
+  // Horarios libres para el día actualmente seleccionado (los botones de la
+  // derecha). Se recalcula solo cuando cambia algo relevante (useMemo), no en
+  // cada render — ver src/utils/slots.js para la lógica real.
   const slotsDisponibles = useMemo(() => {
     if (!profesional) return [];
     return getSlotsDisponibles(profesional, selectedDate, turnos, bloqueos);
   }, [profesional, selectedDate, turnos, bloqueos]);
 
+  // Le dice al Calendario qué días no se pueden clickear: cualquier día sin
+  // ningún horario libre (ya sea por bloqueo, por no ser día de atención, o
+  // porque ya está todo reservado).
   const isDayDisabled = (day) => {
     if (!profesional) return true;
     return getSlotsDisponibles(profesional, day, turnos, bloqueos).length === 0;
   };
 
+  // El puntito del calendario marca "este día tiene al menos un horario libre"
+  // (no "este día tiene turnos", a diferencia de GestionTurnosProfesional.jsx,
+  // que lo usa al revés porque ahí lo que importa es lo ya ocupado).
   const hasEvento = (day) => {
     if (!profesional) return false;
     return getSlotsDisponibles(profesional, day, turnos, bloqueos).length > 0;
   };
 
+  // Feriado (si lo hay) para un día puntual, comparando por fecha en string
+  // ("yyyy-MM-dd") para no depender de comparar objetos Date.
   const feriadoDelDia = (day) => feriados.find((f) => f.fecha === toISODate(day));
   const esFeriado = (day) => Boolean(feriadoDelDia(day));
+  // Se muestra como aviso arriba de los horarios sea que el profesional
+  // trabaje ese feriado o no — es solo información para quien está reservando.
   const feriadoSeleccionado = feriadoDelDia(selectedDate);
 
+  // Confirma la reserva del slot elegido y refresca la lista de turnos del
+  // profesional para que ese horario deje de aparecer como disponible.
   const handleReservar = async () => {
     if (!selectedSlot) return;
 

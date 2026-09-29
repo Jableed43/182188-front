@@ -4,10 +4,17 @@ import MisTurnos from './components/agenda/MisTurnos';
 import GestionTurnosProfesional from './components/agenda/GestionTurnosProfesional';
 import BloqueoAgenda from './components/agenda/BloqueoAgenda';
 
-// Datos de ejemplo para probar cada componente de forma standalone.
+// App.jsx NO es parte de la funcionalidad del proyecto: es solo una demo para
+// poder ver y probar los 4 componentes standalone en un mismo lugar, con
+// datos de ejemplo hardcodeados en vez de un login real. Un proyecto que
+// integre estos componentes de verdad reemplazaría PACIENTE_DEMO_ID /
+// PROFESIONAL_DEMO_ID por el id del usuario logueado, y probablemente
+// montaría cada componente en su propia ruta en vez de este selector con botones.
 const PACIENTE_DEMO_ID = '1';
 const PROFESIONAL_DEMO_ID = '1';
 
+// Cada entrada es una vista de la demo: qué texto va en el botón de navegación
+// y qué componente se muestra al elegirla, ya con sus props resueltas.
 const VISTAS = {
   reservar: { label: 'Reservar turno', Componente: () => <ReservarTurno pacienteId={PACIENTE_DEMO_ID} /> },
   misTurnos: { label: 'Mis turnos (paciente)', Componente: () => <MisTurnos pacienteId={PACIENTE_DEMO_ID} /> },
