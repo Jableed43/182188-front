@@ -6,6 +6,7 @@ import {
   reservarTurno as reservarTurnoApi,
 } from '../../services/turnoService';
 import { getBloqueosPorProfesional } from '../../services/bloqueoService';
+import { getFeriados } from '../../services/feriadoService';
 import { getSlotsDisponibles } from '../../utils/slots';
 import { formatFechaLarga, toISODate } from '../../utils/dateUtils';
 import './agenda.css';
@@ -17,6 +18,7 @@ const ReservarTurno = ({ pacienteId, onReservado }) => {
   const [profesionalId, setProfesionalId] = useState('');
   const [turnos, setTurnos] = useState([]);
   const [bloqueos, setBloqueos] = useState([]);
+  const [feriados, setFeriados] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [motivo, setMotivo] = useState('');
@@ -24,6 +26,7 @@ const ReservarTurno = ({ pacienteId, onReservado }) => {
 
   useEffect(() => {
     getProfesionales().then(setProfesionales);
+    getFeriados().then(setFeriados);
   }, []);
 
   useEffect(() => {
@@ -48,6 +51,10 @@ const ReservarTurno = ({ pacienteId, onReservado }) => {
     if (!profesional) return false;
     return getSlotsDisponibles(profesional, day, turnos, bloqueos).length > 0;
   };
+
+  const feriadoDelDia = (day) => feriados.find((f) => f.fecha === toISODate(day));
+  const esFeriado = (day) => Boolean(feriadoDelDia(day));
+  const feriadoSeleccionado = feriadoDelDia(selectedDate);
 
   const handleReservar = async () => {
     if (!selectedSlot) return;
@@ -107,10 +114,17 @@ const ReservarTurno = ({ pacienteId, onReservado }) => {
             }}
             isDayDisabled={isDayDisabled}
             hasEvento={hasEvento}
+            esFeriado={esFeriado}
           />
 
           <div className="agenda-card">
             <h3 style={{ marginTop: 0 }}>{formatFechaLarga(selectedDate)}</h3>
+
+            {feriadoSeleccionado && (
+              <p style={{ color: 'var(--error)', fontWeight: 600 }}>
+                Feriado: {feriadoSeleccionado.nombre}
+              </p>
+            )}
 
             <div className="slots-grid" style={{ marginBottom: 20 }}>
               {slotsDisponibles.length === 0 && <p>No hay horarios disponibles este día.</p>}

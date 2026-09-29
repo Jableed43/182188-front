@@ -8,10 +8,13 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch agenda.json --port 3000"
+    "server": "node scripts/server.js",
+    "server:plain": "json-server --watch agenda.json --port 3000",
+    "feriados:fetch": "node scripts/fetch-feriados.js"
   },
   "dependencies": {
     "date-fns": "^3.6.0",
+    "node-cron": "^4.6.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },

@@ -97,6 +97,15 @@
   cursor: not-allowed;
 }
 
+.calendario-dia.feriado {
+  color: var(--error);
+  font-weight: bold;
+}
+
+.calendario-dia.feriado.disabled {
+  color: #f3a7a7;
+}
+
 .calendario-punto {
   position: absolute;
   bottom: 4px;

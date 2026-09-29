@@ -8,8 +8,16 @@ export const getBloqueosPorProfesional = async (profesionalId) => {
 };
 
 // Un bloqueo sin "hora" cierra el día completo; con "hora" cierra solo ese horario puntual.
-export const crearBloqueo = ({ profesionalId, fecha, hora, motivo }) =>
-  post('/bloqueos', { profesionalId, fecha, hora: hora || null, motivo: motivo || '' });
+// feriadoId (opcional) marca que este bloqueo es la decisión de un profesional de no
+// trabajar un feriado puntual, en lugar de un evento personal.
+export const crearBloqueo = ({ profesionalId, fecha, hora, motivo, feriadoId }) =>
+  post('/bloqueos', {
+    profesionalId,
+    fecha,
+    hora: hora || null,
+    motivo: motivo || '',
+    feriadoId: feriadoId || null,
+  });
 
 export const eliminarBloqueo = (bloqueoId) => del(`/bloqueos/${bloqueoId}`);
 

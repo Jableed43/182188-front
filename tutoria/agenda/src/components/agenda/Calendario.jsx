@@ -15,7 +15,7 @@ const DIAS_CORTOS = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
 
 // Calendario mensual reutilizable: navega meses, marca el día seleccionado
 // y permite deshabilitar/indicar días según las funciones que le pasa el padre.
-const Calendario = ({ selectedDate, onSelectDate, isDayDisabled, hasEvento }) => {
+const Calendario = ({ selectedDate, onSelectDate, isDayDisabled, hasEvento, esFeriado }) => {
   const [currentMonth, setCurrentMonth] = useState(startOfMonth(selectedDate));
 
   const startDay = startOfMonth(currentMonth).getDay();
@@ -44,6 +44,7 @@ const Calendario = ({ selectedDate, onSelectDate, isDayDisabled, hasEvento }) =>
           const isPast = isBefore(day, startOfDay(new Date())) && !isSameDay(day, new Date());
           const isSelected = isSameDay(day, selectedDate);
           const disabled = isPast || (isDayDisabled ? isDayDisabled(day) : false);
+          const feriado = !isSelected && esFeriado?.(day);
 
           return (
             <button
@@ -51,7 +52,7 @@ const Calendario = ({ selectedDate, onSelectDate, isDayDisabled, hasEvento }) =>
               key={day.toString()}
               disabled={disabled}
               onClick={() => onSelectDate(day)}
-              className={`calendario-dia${isSelected ? ' selected' : ''}${disabled ? ' disabled' : ''}`}
+              className={`calendario-dia${isSelected ? ' selected' : ''}${disabled ? ' disabled' : ''}${feriado ? ' feriado' : ''}`}
             >
               {format(day, 'd')}
               {!disabled && !isSelected && hasEvento?.(day) && <span className="calendario-punto" />}

@@ -5,8 +5,9 @@ import {
   eliminarBloqueo,
   actualizarDisponibilidad,
 } from '../../services/bloqueoService';
+import { getFeriados } from '../../services/feriadoService';
 import { getProfesionales } from '../../services/turnoService';
-import { DIAS_SEMANA } from '../../utils/dateUtils';
+import { DIAS_SEMANA, toISODate } from '../../utils/dateUtils';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import './agenda.css';
@@ -20,6 +21,7 @@ const BloqueoAgenda = ({ profesionalId }) => {
   const [profesional, setProfesional] = useState(null);
   const [disponibilidad, setDisponibilidad] = useState([]);
   const [bloqueos, setBloqueos] = useState([]);
+  const [feriados, setFeriados] = useState([]);
 
   const [fecha, setFecha] = useState('');
   const [hora, setHora] = useState('');
@@ -31,6 +33,8 @@ const BloqueoAgenda = ({ profesionalId }) => {
     setProfesional(p || null);
     setDisponibilidad(p?.disponibilidad || []);
     setBloqueos(await getBloqueosPorProfesional(profesionalId));
+    const hoy = toISODate(new Date());
+    setFeriados((await getFeriados()).filter((f) => f.fecha >= hoy));
   };
 
   useEffect(() => {
@@ -73,6 +77,24 @@ const BloqueoAgenda = ({ profesionalId }) => {
 
   const handleEliminarBloqueo = async (bloqueoId) => {
     await eliminarBloqueo(bloqueoId);
+    setBloqueos(await getBloqueosPorProfesional(profesionalId));
+  };
+
+  const bloqueoDeFeriado = (feriadoId) => bloqueos.find((b) => b.feriadoId === feriadoId);
+
+  const toggleFeriado = async (feriado) => {
+    const existente = bloqueoDeFeriado(feriado.id);
+    if (existente) {
+      await eliminarBloqueo(existente.id);
+    } else {
+      await crearBloqueo({
+        profesionalId,
+        fecha: feriado.fecha,
+        hora: null,
+        motivo: `Feriado: ${feriado.nombre}`,
+        feriadoId: feriado.id,
+      });
+    }
     setBloqueos(await getBloqueosPorProfesional(profesionalId));
   };
 
@@ -128,7 +150,34 @@ const BloqueoAgenda = ({ profesionalId }) => {
 
         {/* Bloqueos puntuales por eventos/citas */}
         <div>
-          <h3>Bloquear día u horario puntual</h3>
+          <h3>Feriados</h3>
+          <p className="agenda-subtitulo">
+            Cada profesional decide si trabaja o no un feriado. Tildá los que no vas a atender.
+          </p>
+          {feriados.length === 0 && <p className="agenda-subtitulo">No hay feriados cargados.</p>}
+          {feriados.map((f) => {
+            const bloqueado = Boolean(bloqueoDeFeriado(f.id));
+            return (
+              <div key={f.id} className="bloqueo-item">
+                <div>
+                  <strong>{format(new Date(`${f.fecha}T00:00:00`), 'dd/MM/yyyy', { locale: es })}</strong>
+                  {' — '}{f.nombre}
+                  <div className="agenda-subtitulo" style={{ marginBottom: 0 }}>
+                    {bloqueado ? 'No vas a trabajar este día' : 'Vas a trabajar este día'}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className={bloqueado ? 'btn btn-outline' : 'btn btn-danger'}
+                  onClick={() => toggleFeriado(f)}
+                >
+                  {bloqueado ? 'Sí quiero trabajar' : 'No quiero trabajar'}
+                </button>
+              </div>
+            );
+          })}
+
+          <h3 style={{ marginTop: 32 }}>Bloquear día u horario puntual</h3>
           <form onSubmit={handleCrearBloqueo} className="agenda-card">
             <div className="agenda-campo">
               <label htmlFor="bloqueo-fecha">Fecha</label>
